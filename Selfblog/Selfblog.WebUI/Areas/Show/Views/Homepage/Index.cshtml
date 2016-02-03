@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Show/Views/Shared/_Layoutblog.cshtml";
+}
+@using Selfblog.DomainObject
+@using Selfblog.Infrastructure
+
+@*个人喜爱的视频推荐*@
+<div class="row">
+    @*  <aside class="col-md-3">
+                <section class="hidden-xs">
+                    <div class="content-article" style="border: 1px solid #c9d2db">
+                        <figure class="thumbnail">
+                            <a href="http://www.yeahzan.com/zanblog/archives/856.html">
+                                <img width="750" height="300" src="http://www.yeahzan.com/zanblog/wp-content/uploads/2013/09/car_5.jpg" class="attachment-full wp-post-image" alt="car_5"></a>
+                        </figure>
+                        <div class="alert alert-zan">
+                            HI，赞友们，在两个月前我们推出了ZanBlog3主题，但还是有一部分用户喜欢Zanblog2的样式，所以在V2.0.7发布8个多月之后，再次更新Zanblog2。
+现在让我们一起...		
+                        </div>
+                    </div>
+
+                </section>
+            </aside>*@
+</div>
+
+<div class="row">
+    @*文章内容*@
+    <aside class="col-md-8">
+
+        <div id="article-list" style="margin-left: 30px;">
+            <div class="page-header">
+                <h2>所有文章<small>_All Articles  </small></h2>
+            </div>
+            @{
+                if (ViewBag.allarticlelist != null)
+                {
+                    var allarticlelist = (PageOfItems<articleDomainObject>)ViewBag.allarticlelist;
+                    foreach (var article in allarticlelist)
+                    {
+                <div class="article well clearfix">
+                    <i class="fa fa-bookmark article-stick visible-md visible-lg"></i>
+                    <!-- 大型设备文章属性 -->
+                    <section class="hidden-xs">
+                        <div class="title-article">
+                            <h1><a href="/show/homepage/articleinfo?article_id=@article.article_id">@article.article_name</a></h1>
+                        </div>
+                        <div class="tag-article">
+                            <span><i class="fa fa-tags"></i>作者：【<a href="/show/homepage/index?author=@article.article_author">@article.article_author</a>】</span>
+                            <span><i class="fa fa-user"></i>分类：【<a href="/show/homepage/index?categroy_id=@article.category_id">@article.photo.other</a>】</span>
+                            <span><i class="fa fa-eye"></i>浏览量：【<a href="/show/homepage/index?click=click">@article.article_click</a>】</span>
+                            <span><i class="fa fa-eye"></i>评论数：【<a href="/show/homepage/index?comment=comment">@article.comment_count</a>】</span>
+                        </div>
+                        <br />
+                        <div class="content-article">
+                            <figure class="thumbnail" style="width: 240px; float: left !important;">
+                                <img width="200" height="200" style="background-size: cover;" src="@string.Format("~~{0}", article.photo.photo_imageurl)" />
+                            </figure>
+                            <div class="alert alert-zan" style="padding-top: 0px !important;">
+                                @(string.IsNullOrWhiteSpace(article.article_content) ? "文章暂无内容!" : (article.article_content.Length > 300 ? article.article_content.Substring(0, 300) + "......" : article.article_content))
+                            </div>
+                        </div>
+                    </section>
+                    <!-- 大型设备文章属性结束 -->
+
+                    <!-- 小型设备文章属性 -->
+                    <section class="visible-xs">
+                        <div class="title-article">
+                            <h1><a href="http://www.yeahzan.com/zanblog/archives/856.html">@article.article_name</a></h1>
+                        </div>
+                        <div class="tag-article">
+                            <span><i class="fa fa-tags"></i>作者：【<a href="#">@article.article_author</a>】</span>
+                            <span><i class="fa fa-user"></i>分类：【<a href="#">@article.photo.other</a>】</span>
+                            <span><i class="fa fa-eye"></i>浏览量：【<a href="#">@article.article_click</a>】</span>
+                            <span><i class="fa fa-eye"></i>评论数：【<a href="#">@article.comment_count</a>】</span>
+                        </div>
+                        <br />
+                        <div class="content-article">
+                            <figure class="thumbnail">
+                                <img width="730" height="300" style="background-size: cover;" src="@string.Format("~~{0}", article.photo.photo_imageurl)" />
+                            </figure>
+                            <div class="alert alert-zan" style="padding-top: 0px !important;">
+                                @(string.IsNullOrWhiteSpace(article.article_content) ? "文章暂无内容!" : (article.article_content.Length > 300 ? article.article_content.Substring(0, 300) + "......" : article.article_content))
+                            </div>
+                        </div>
+                    </section>
+                    <!-- 小型设备文章属性结束 -->
+
+                </div>
+                    }
+                }
+            }
+
+
+        </div>
+
+
+        @*分页*@
+
+        <aside class="page" style="float: right;">
+            <ul class="pagination">
+                @using Selfblog.Common
+                @if (ViewBag.pageIndex != null && ViewBag.pageCount != null)
+                {
+                    @MvcHtmlString.Create(MyPageBar.ShowMyPageBar((int)ViewBag.pageIndex, (int)ViewBag.pageCount))
+                }
+            </ul>
+        </aside>
+
+    </aside>
+
+
+    @*右侧边栏*@
+    <aside class="col-md-4" id="sidebar">
+
+        @*登录标题分类*@
+        @if (ViewBag.categorylist != null)
+        {
+            @Html.Partial("_PartialRightLogin", (List<categoryDomainObject>)ViewBag.categorylist);
+        }
+
+        @if (ViewBag.hotarticlelist != null)
+        {
+            @Html.Partial("_PartialHotArctile", (List<articleDomainObject>)ViewBag.hotarticlelist);
+        }
+
+        @if (ViewBag.newcommentlist != null)
+        {
+            @Html.Partial("_PartialNewComment", (List<user_commentDomainObject>)ViewBag.newcommentlist);
+        }
+
+    </aside>
+</div>

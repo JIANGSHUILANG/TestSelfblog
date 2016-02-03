@@ -1,0 +1,172 @@
+﻿@model Selfblog.DomainObject.articleDomainObject
+
+@{
+    ViewBag.Title = "AddUpdateBlog";
+    Layout = "~/Views/Shared/_LayoutAdminBlog.cshtml";
+}
+
+<h2>AddUpdateBlog</h2>
+<div class="admin-content">
+    <input type="hidden" id="hiddenmessage" value="@ViewBag.message"/>
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class='am-text-primary am-text-lg'>作品</strong> / <small>作品发布</small></div>
+    </div>
+
+    <div class="am-u-sm-10 am-u-md-6 am-u-md-pull-15">
+
+        @using (Html.BeginForm("AddUpdateBlog", "stageblog"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>articleDomainObject</legend>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_id)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_id)
+                    @Html.ValidationMessageFor(model => model.article_id)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_name)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_name)
+                    @Html.ValidationMessageFor(model => model.article_name)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_author)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_author)
+                    @Html.ValidationMessageFor(model => model.article_author)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_codeurl)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_codeurl)
+                    @Html.ValidationMessageFor(model => model.article_codeurl)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_time)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_time)
+                    @Html.ValidationMessageFor(model => model.article_time)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_click)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_click)
+                    @Html.ValidationMessageFor(model => model.article_click)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.category_id)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.category_id)
+                    @Html.ValidationMessageFor(model => model.category_id)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.type_id)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.type_id)
+                    @Html.ValidationMessageFor(model => model.type_id)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_type)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_type)
+                    @Html.ValidationMessageFor(model => model.article_type)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_content)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_content)
+                    @Html.ValidationMessageFor(model => model.article_content)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_up)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_up)
+                    @Html.ValidationMessageFor(model => model.article_up)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_support)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_support)
+                    @Html.ValidationMessageFor(model => model.article_support)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_status)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_status)
+                    @Html.ValidationMessageFor(model => model.article_status)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.photo_id)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.photo_id)
+                    @Html.ValidationMessageFor(model => model.photo_id)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_goodup)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_goodup)
+                    @Html.ValidationMessageFor(model => model.article_goodup)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.article_baddown)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.article_baddown)
+                    @Html.ValidationMessageFor(model => model.article_baddown)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.comment_count)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.comment_count)
+                    @Html.ValidationMessageFor(model => model.comment_count)
+                </div>
+
+                <p>
+                    <input type="submit" value="Create" />
+                </p>
+            </fieldset>
+        }
+    </div>
+</div>
+
+
+@section scripts {
+
+}

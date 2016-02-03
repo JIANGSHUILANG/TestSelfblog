@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SelfBlogModelStoreContainer" CdmEntityContainer="SelfBlogEntities">
+    <EntitySetMapping Name="category">
+      <EntityTypeMapping TypeName="SelfBlogModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="photo_id" ColumnName="photo_id" />
+          <ScalarProperty Name="partent_id" ColumnName="partent_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_comment">
+      <EntityTypeMapping TypeName="SelfBlogModel.user_comment">
+        <MappingFragment StoreEntitySet="user_comment">
+          <ScalarProperty Name="floor" ColumnName="floor" />
+          <ScalarProperty Name="rec_id" ColumnName="rec_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="rec_status" ColumnName="rec_status" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="comment_time" ColumnName="comment_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="friendly_link">
+      <EntityTypeMapping TypeName="SelfBlogModel.friendly_link">
+        <MappingFragment StoreEntitySet="friendly_link">
+          <ScalarProperty Name="show_order" ColumnName="show_order" />
+          <ScalarProperty Name="link_logo" ColumnName="link_logo" />
+          <ScalarProperty Name="link_url" ColumnName="link_url" />
+          <ScalarProperty Name="link_name" ColumnName="link_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="SelfBlogModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="user_power" ColumnName="user_power" />
+          <ScalarProperty Name="user_freeze" ColumnName="user_freeze" />
+          <ScalarProperty Name="user_lock" ColumnName="user_lock" />
+          <ScalarProperty Name="user_says" ColumnName="user_says" />
+          <ScalarProperty Name="user_blood_type" ColumnName="user_blood_type" />
+          <ScalarProperty Name="user_weibo" ColumnName="user_weibo" />
+          <ScalarProperty Name="user_last_update_time" ColumnName="user_last_update_time" />
+          <ScalarProperty Name="user_register_ip" ColumnName="user_register_ip" />
+          <ScalarProperty Name="user_register_time" ColumnName="user_register_time" />
+          <ScalarProperty Name="user_school" ColumnName="user_school" />
+          <ScalarProperty Name="user_image_url" ColumnName="user_image_url" />
+          <ScalarProperty Name="user_description" ColumnName="user_description" />
+          <ScalarProperty Name="user_birthday" ColumnName="user_birthday" />
+          <ScalarProperty Name="user_last_login_ip" ColumnName="user_last_login_ip" />
+          <ScalarProperty Name="user_rank_id" ColumnName="user_rank_id" />
+          <ScalarProperty Name="user_mark" ColumnName="user_mark" />
+          <ScalarProperty Name="user_address" ColumnName="user_address" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_qq" ColumnName="user_qq" />
+          <ScalarProperty Name="user_sex" ColumnName="user_sex" />
+          <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+          <ScalarProperty Name="user_pwd" ColumnName="user_pwd" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="visitor">
+      <EntityTypeMapping TypeName="SelfBlogModel.visitor">
+        <MappingFragment StoreEntitySet="visitor">
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="visitor_ip" ColumnName="visitor_ip" />
+          <ScalarProperty Name="visitor_time" ColumnName="visitor_time" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="v_id" ColumnName="v_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="photo">
+      <EntityTypeMapping TypeName="SelfBlogModel.photo">
+        <MappingFragment StoreEntitySet="photo">
+          <ScalarProperty Name="photo_typeid" ColumnName="photo_typeid" />
+          <ScalarProperty Name="photo_imageurl" ColumnName="photo_imageurl" />
+          <ScalarProperty Name="photo_id" ColumnName="photo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="article">
+      <EntityTypeMapping TypeName="SelfBlogModel.article">
+        <MappingFragment StoreEntitySet="article">
+          <ScalarProperty Name="article_baddown" ColumnName="article_baddown" />
+          <ScalarProperty Name="article_goodup" ColumnName="article_goodup" />
+          <ScalarProperty Name="photo_id" ColumnName="photo_id" />
+          <ScalarProperty Name="article_status" ColumnName="article_status" />
+          <ScalarProperty Name="article_codeurl" ColumnName="article_codeurl" />
+          <ScalarProperty Name="article_author" ColumnName="article_author" />
+          <ScalarProperty Name="article_support" ColumnName="article_support" />
+          <ScalarProperty Name="article_up" ColumnName="article_up" />
+          <ScalarProperty Name="article_content" ColumnName="article_content" />
+          <ScalarProperty Name="article_type" ColumnName="article_type" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="article_click" ColumnName="article_click" />
+          <ScalarProperty Name="article_time" ColumnName="article_time" />
+          <ScalarProperty Name="article_name" ColumnName="article_name" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

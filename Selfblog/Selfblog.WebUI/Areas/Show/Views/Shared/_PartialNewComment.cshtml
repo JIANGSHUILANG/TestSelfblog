@@ -1,0 +1,24 @@
+﻿@using Selfblog.DomainObject
+@model List<user_commentDomainObject>
+<aside id="zan_latest_comments-2">
+    <div class="list-group">
+        <a href="#" class="list-group-item disabled">最新评论</a>
+        @{
+            if (Model != null)
+            {
+                var comments = (List<user_commentDomainObject>)ViewBag.newcommentlist;
+                foreach (var item in comments)
+                {
+            <a href="#" class="list-group-item" >
+                <img alt="" src="~/Content/Images/admin/1ecedeede84abbf371b9d8d656bb4265.png" class="img-circle" height="40" width="40">
+                <span style="height: 40px; width: 40px;color:#666666;">
+                      @(string.IsNullOrWhiteSpace(item.comment) ? "............" : (item.comment.Length > 30 ? item.comment.Substring(0, 30) + "......" : item.comment))
+                    <span style="float:right;padding-top:10px;font-size:12px;">@item.comment_time.Value.ToShortDateString()</span>
+                </span>
+            </a>
+                }
+            }
+        }
+
+    </div>
+</aside>

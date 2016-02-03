@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SelfBlogModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SelfBlogEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="category" EntityType="SelfBlogModel.category" />
+    <EntitySet Name="user_comment" EntityType="SelfBlogModel.user_comment" />
+    <EntitySet Name="friendly_link" EntityType="SelfBlogModel.friendly_link" />
+    <EntitySet Name="user" EntityType="SelfBlogModel.user" />
+    <EntitySet Name="visitor" EntityType="SelfBlogModel.visitor" />
+    <EntitySet Name="photo" EntityType="SelfBlogModel.photo" />
+    <EntitySet Name="article" EntityType="SelfBlogModel.article" />
+  </EntityContainer>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Type="Int32" Name="partent_id" />
+    <Property Type="Int32" Name="photo_id" />
+  </EntityType>
+  <EntityType Name="user_comment">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="type_id" Type="Int32" />
+    <Property Name="comment" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+    <Property Name="comment_time" Type="DateTime" Precision="3" />
+    <Property Type="Int32" Name="article_id" Nullable="false" />
+    <Property Type="Int32" Name="rec_status" />
+    <Property Type="Int32" Name="status" Nullable="false" />
+    <Property Type="Int32" Name="rec_id" Nullable="false" />
+    <Property Type="Int32" Name="floor" />
+  </EntityType>
+  <EntityType Name="friendly_link">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="link_name" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="link_url" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="link_logo" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="show_order" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Type="Int32" Name="user_id" Nullable="false" />
+    <Property Type="Int32" Name="group_id" />
+    <Property Type="String" Name="user_name" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="user_pwd" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="user_phone" MaxLength="22" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="user_sex" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="user_qq" />
+    <Property Type="String" Name="user_email" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="user_address" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="user_mark" />
+    <Property Type="Int32" Name="user_rank_id" />
+    <Property Type="String" Name="user_last_login_ip" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="user_birthday" />
+    <Property Type="String" Name="user_description" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="user_image_url" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="user_school" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="user_register_time" />
+    <Property Type="String" Name="user_register_ip" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="user_last_update_time" />
+    <Property Type="String" Name="user_weibo" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="user_blood_type" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="user_says" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="user_lock" />
+    <Property Type="Int32" Name="user_freeze" />
+    <Property Type="String" Name="user_power" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="visitor">
+    <Key>
+      <PropertyRef Name="v_id" />
+    </Key>
+    <Property Type="Int32" Name="v_id" Nullable="false" />
+    <Property Type="Int32" Name="user_id" />
+    <Property Type="DateTime" Name="visitor_time" Precision="3" />
+    <Property Type="String" Name="visitor_ip" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="type_id" />
+  </EntityType>
+  <EntityType Name="photo">
+    <Key>
+      <PropertyRef Name="photo_id" />
+    </Key>
+    <Property Type="Int32" Name="photo_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="photo_imageurl" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="photo_typeid" />
+  </EntityType>
+  <EntityType Name="article">
+    <Key>
+      <PropertyRef Name="article_id" />
+    </Key>
+    <Property Type="Int32" Name="article_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="article_name" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="article_time" Precision="3" />
+    <Property Type="Int32" Name="article_click" />
+    <Property Type="Int32" Name="category_id" Nullable="false" />
+    <Property Type="Int32" Name="type_id" />
+    <Property Type="Int32" Name="article_type" Nullable="false" />
+    <Property Type="String" Name="article_content" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="article_up" />
+    <Property Type="Int32" Name="article_support" />
+    <Property Type="String" Name="article_author" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="article_codeurl" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="article_status" />
+    <Property Type="Int32" Name="photo_id" />
+    <Property Type="Int32" Name="article_goodup" Nullable="false" />
+    <Property Type="Int32" Name="article_baddown" Nullable="false" />
+  </EntityType>
+</Schema>

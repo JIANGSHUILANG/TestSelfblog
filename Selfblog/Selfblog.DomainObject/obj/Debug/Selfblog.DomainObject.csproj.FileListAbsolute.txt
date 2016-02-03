@@ -1,0 +1,15 @@
+C:\Users\LoserTwo\Desktop\TESTBLOGSYSTEM\Selfblog\Selfblog.DomainObject\bin\Debug\Selfblog.DomainObject.dll
+C:\Users\LoserTwo\Desktop\TESTBLOGSYSTEM\Selfblog\Selfblog.DomainObject\bin\Debug\Selfblog.DomainObject.pdb
+C:\Users\LoserTwo\Desktop\TESTBLOGSYSTEM\Selfblog\Selfblog.DomainObject\obj\Debug\Selfblog.DomainObject.csprojResolveAssemblyReference.cache
+C:\Users\LoserTwo\Desktop\TESTBLOGSYSTEM\Selfblog\Selfblog.DomainObject\obj\Debug\Selfblog.DomainObject.dll
+C:\Users\LoserTwo\Desktop\TESTBLOGSYSTEM\Selfblog\Selfblog.DomainObject\obj\Debug\Selfblog.DomainObject.pdb
+H:\TESTBLOGSYSTEM\Selfblog\Selfblog.DomainObject\bin\Debug\Selfblog.DomainObject.dll
+H:\TESTBLOGSYSTEM\Selfblog\Selfblog.DomainObject\bin\Debug\Selfblog.DomainObject.pdb
+H:\TESTBLOGSYSTEM\Selfblog\Selfblog.DomainObject\obj\Debug\Selfblog.DomainObject.csprojResolveAssemblyReference.cache
+H:\TESTBLOGSYSTEM\Selfblog\Selfblog.DomainObject\obj\Debug\Selfblog.DomainObject.dll
+H:\TESTBLOGSYSTEM\Selfblog\Selfblog.DomainObject\obj\Debug\Selfblog.DomainObject.pdb
+H:\archive\Selfblog\Selfblog.DomainObject\bin\Debug\Selfblog.DomainObject.dll
+H:\archive\Selfblog\Selfblog.DomainObject\bin\Debug\Selfblog.DomainObject.pdb
+H:\archive\Selfblog\Selfblog.DomainObject\obj\Debug\Selfblog.DomainObject.csprojResolveAssemblyReference.cache
+H:\archive\Selfblog\Selfblog.DomainObject\obj\Debug\Selfblog.DomainObject.dll
+H:\archive\Selfblog\Selfblog.DomainObject\obj\Debug\Selfblog.DomainObject.pdb

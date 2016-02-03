@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "articleinfo";
+    Layout = "~/Areas/Show/Views/Shared/_Layoutblog.cshtml";
+}
+@using Selfblog.DomainObject
+@model articleDomainObject
+
+<style>
+    .up-dpwn-btn {
+        height: 45px;
+        width: 45px;
+        background-color: #f6f1f1;
+        border: none;
+        margin-left: 10px;
+        border-radius: 50%;
+        box-shadow: 0 0 7px #0094ff;
+        -webkit-box-shadow: 0 0 7px #0094ff;
+        -moz-box-shadow: 0 0 7px #0094ff;
+        /*line-height:1px;*/
+        /*-webkit-box-shadow:*/
+    }
+
+        .up-dpwn-btn:hover {
+            background-color: #f8dede;
+        }
+
+
+    .article-content {
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #e5e5e5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /*多说样式修改*/
+    #ds-thread {
+        padding: 25px;
+    }
+
+    ds-delete-comment {
+        display: none;
+    }
+    .ds-post-delete {
+    display:none !important;
+    }
+    .ds-powered-by {
+        display: none;
+    }
+</style>
+
+<div class="row">
+    <aside class="col-md-3">
+        <input id="J-xl-2" /><a href="javascript:;;" type="button" id="J-xl-2-btn">查看日历</a>
+    </aside>
+    @if (Model != null)
+    {
+        <aside class="col-md-9" style="background: #f6f6f6">
+            <div class="content">
+                <div class="page-header">
+                    <div>
+                        <h2>@Model.article_name</h2>
+                    </div>
+                </div>
+                <div class="content-info">
+                    <div class="article-content">
+                        @Html.Raw(Model.article_content)
+                    </div>
+
+
+
+                </div>
+                <div class="content-footer">
+                    <div>
+                        分类：<a href="/show/homepage/index?categroy_id=@Model.category_id">@Model.photo.other</a>
+                    </div>
+                    <hr />
+                    <p>
+                        @*                        <button onclick="clickupdown(@Model.article_id,1)"  class="glyphicon glyphicon-thumbs-up up-dpwn-btn">赞(<span class="good" style="color: #cc4545;">@Model.article_goodup</span>)</button>
+                        <button onclick="clickupdown(@Model.article_id,-1)" class="glyphicon glyphicon-thumbs-down up-dpwn-btn">踩(<span class="down" style="color: #cc4545;">@Model.article_baddown</span>)</button>*@
+                        <span style="float: right;">发布时间： @Model.article_time &nbsp;浏览量（@Model.article_click）&nbsp;评论（@Model.comment_count）</span>
+                    </p>
+                </div>
+
+                <div style="float: left;">最新访客：</div>
+                <ul class="ds-recent-visitors" data-num-items="10"></ul>
+
+                <!--多说js加载开始，一个页面只需要加载一次 -->
+                <script type="text/javascript">
+                    var duoshuoQuery = { short_name: "jiangshuilang" };
+                    (function () {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript'; ds.async = true;
+                        ds.src = 'http://static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!--多说js加载结束，一个页面只需要加载一次 -->
+
+
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="@Model.article_id" data-title="@Model.article_name" data-url="Test"></div>
+                <!-- 多说评论框 end -->
+                <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                <script type="text/javascript">
+                    var duoshuoQuery = { short_name: "jiangshuilang" };
+                    (function () {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript'; ds.async = true;
+                        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                         || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- 多说公共JS代码 end -->
+            </div>
+        </aside>
+        
+    }
+</div>
+
+
+
+
+@section scripts{
+    <script src="~/Areas/Show/Script/laydate.dev.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+
+        })
+
+        document.getElementById('J-xl-2-btn').onclick = function () {
+            laydate({
+                elem: '#J-xl-2'
+            });
+        }
+        // 1：赞   -1：踩
+        function clickupdown(article_id, clicktype) {
+            $.ajax({
+                type: "post",
+                url: "/show/homepage/clickrticleup_down",
+                data: {
+                    article_id: article_id,
+                    clicktype: clicktype
+                },
+                success: function (data) {
+                    var json = $.parseJSON(data);
+                    if (json.type == 1) {
+                        alert(json.message);
+                        //json.clicktype == 1?
+                        var up = $(".good").text();
+                        var down = $(".down").text();
+
+                        if (json.clicktype == 1) {
+                            $(".good").text(parseInt(up) + 1);
+                        } else {
+                            $(".down").text(parseInt(down) + 1);
+                        }
+
+                        $(".good").parent().attr("disabled", "disabled");
+                        $(".down").parent().attr("disabled", "disabled");
+                    }
+                }
+            })
+        }
+    </script>
+}
+

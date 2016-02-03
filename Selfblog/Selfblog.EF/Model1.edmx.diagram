@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d8ad347e42b2434aaed524cc589077bc" Name="关系图1" ZoomLevel="67">
+        <EntityTypeShape EntityType="SelfBlogModel.category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfBlogModel.user_comment" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfBlogModel.friendly_link" Width="1.5" PointX="11.998487865551601" PointY="3.0185291036118422" />
+        <EntityTypeShape EntityType="SelfBlogModel.user" Width="1.5" PointX="8.8053331919039284" PointY="19.013317653449867" />
+        <EntityTypeShape EntityType="SelfBlogModel.visitor" Width="1.5" PointX="2.6579839692721068" PointY="29.6528626073398" />
+        <EntityTypeShape EntityType="SelfBlogModel.photo" Width="1.5" PointX="6.6863520772598459" PointY="13.975372216652787" />
+        <EntityTypeShape EntityType="SelfBlogModel.article" Width="1.5" PointX="8.7160208955016074" PointY="22.067293013477368" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
