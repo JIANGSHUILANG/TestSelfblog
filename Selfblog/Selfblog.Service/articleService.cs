@@ -20,8 +20,8 @@ namespace Selfblog.Service
         /// <summary>
         /// 获取文章信息以及相关信息
         /// </summary>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">分页尺寸</param>
         /// <param name="categroy_id">文章分类ID</param>
         /// <returns></returns>
         public Infrastructure.PageOfItems<articleDomainObject> Getarticles(int pageIndex, int pageSize, int categroy_id = 0, string author = null, string click = null, string comment = null)
