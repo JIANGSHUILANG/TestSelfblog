@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace Selfblog.WebUI.Areas.Show.Controllers
 {
     /// <summary>
-    /// 部分类  此类为父类
+    /// 部分类  此类为父类，前台
     /// </summary>
     public partial class FrontBaseController : Controller
     {
@@ -18,11 +18,11 @@ namespace Selfblog.WebUI.Areas.Show.Controllers
         public Iuser_commentService usercommentservice = new user_commentService();
     }
     /// <summary>
-    /// 部分类 此类为父类
+    /// 部分类 此类为父类 ，前台
     /// </summary>
     public partial class FrontBaseController : Controller
     { 
-    
+            
 
 
     }
