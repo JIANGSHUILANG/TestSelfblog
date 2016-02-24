@@ -8,6 +8,9 @@ using System.Web.Mvc;
 
 namespace Selfblog.WebUI.Areas.Show.Controllers
 {
+    /// <summary>
+    /// 部分类  此类为父类
+    /// </summary>
     public partial class FrontBaseController : Controller
     {
         public IarticleService articleservice = new articleService();
@@ -15,7 +18,7 @@ namespace Selfblog.WebUI.Areas.Show.Controllers
         public Iuser_commentService usercommentservice = new user_commentService();
     }
     /// <summary>
-    /// 部分类
+    /// 部分类 此类为父类
     /// </summary>
     public partial class FrontBaseController : Controller
     { 
