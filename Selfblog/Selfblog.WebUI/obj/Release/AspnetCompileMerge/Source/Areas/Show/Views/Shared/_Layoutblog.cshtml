@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test</title>
+    @Styles.Render("~/bundles/Show/Script/bootstrap-3.3.5-dist/css")
+
+    <style type="text/css">
+        .label {
+            margin-left: 2px;
+            line-height: 2 !important;
+        }
+
+        footer {
+            background: #CCC;
+            padding: 10px 0 50px 0;
+            width: 100%;
+        }
+
+        .color-F00 {
+            background: #7C7C80;
+        }
+    </style>
+</head>
+<body>
+    @*<div class="row">
+        <aside class="col-md-2"></aside>
+        <aside class="col-md-8">
+          
+        </aside>
+    </div>*@
+    <div class="container-fluid" style="background: #7C7C80; height: 30px;"></div>
+
+    @*顶部导航*@
+    <nav class="navbar navbar-default" style="text-align: center;">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/show/homepage/index">段亮个人博客</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/show/homepage/index">首页<span class="sr-only">(current)</span></a></li>
+                <li class=""><a href="#">免费资源下载</a></li>
+                <li class=""><a href="#">关于作者</a></li>
+                <li class=""><span id="J-xl-2"></span><a href="javascript:;;" type="button" id="J-xl-2-btn">查看日历</a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="输入搜索关键字">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            @* <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>*@
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    @RenderBody()
+    <footer class="color-F00">
+    </footer>
+</body>
+</html>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+@Scripts.Render("~/bundles/Show/Script/bootstrap-3.3.5-dist/js")
+
+
+<script type="text/javascript">
+    document.getElementById('J-xl-2-btn').onclick = function () {
+        laydate({
+            elem: '#J-xl-2'
+        });
+    }
+
+
+</script>
+@RenderSection("scripts", false)
+
+
+

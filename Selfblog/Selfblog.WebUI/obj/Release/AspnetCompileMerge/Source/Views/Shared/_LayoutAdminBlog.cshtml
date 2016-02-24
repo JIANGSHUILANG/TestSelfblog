@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>波波网商城管理系统</title>
+    <meta name="description" content="波波网商城管理系统">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    @* <link rel="icon" type="image/png" href="/Content/Images/bobo.ico">
+    <link rel="apple-touch-icon-precomposed" href="/Content/Images/bobo.ico">*@
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+
+    @Styles.Render("~/bundles/Css/amazeuicss")
+    <style type="text/css">
+        .footer {
+            padding: 30px 0;
+            text-align: center;
+            color: black;
+            width: 100%;
+            top: 100%;
+            min-width: 700px;
+            /*margin-top: 200px;*/
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+            .footer .foot-menu a {
+                margin: 0 10px;
+                color: #939393;
+            }
+
+            .footer .copyright {
+                margin-top: 20px;
+            }
+
+        .inside {
+            width: 800px;
+            margin: auto;
+        }
+
+        .footer .foot-menu a {
+            margin: 0 10px;
+            color: #939393;
+        }
+    </style>
+</head>
+<body>
+    <!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+    @* @using bobostore.WebUI.Models.Manage
+    @using bobostore.WebUI.Models.SelfMvcHtml
+    @{ var ManagerInfo = Manager.User; }*@
+    <header class="am-topbar admin-header">
+        <div class="am-topbar-brand">
+            <strong>波波网商城管理系统</strong>
+        </div>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+                <li class="am-hide-sm-only" id="headurl">
+                    @*@(string.IsNullOrWhiteSpace(ManagerInfo.OM_LOGO) ? Html.Image("/Content/Images/cb8065380cd79123dc50bc3caf345982b3b780c1.jpg", " width='32' height='40' style='margin-top:5px;'", 1) : Html.Image(ManagerInfo.OM_LOGO, " width='32' height='40' style='margin-top:5px;'"))*@
+                </li>
+                <li class="am-dropdown" data-am-dropdown>
+                    <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                        <span class="am-icon-users"></span>@*@ManagerInfo.OM_USERNAME*@ <span class="am-icon-caret-down"></span>
+                    </a>
+                    <ul class="am-dropdown-content">
+                        <li><a href="/AdminLogin/LoginOut"><span class="am-icon-power-off"></span>退出</a></li>
+                    </ul>
+                </li>
+                <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span><span class="admin-fullText">开启全屏</span></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="am-cf admin-main">
+        <!-- sidebar start -->
+        <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+            <div class="am-offcanvas-bar admin-offcanvas-bar">
+                <ul class="am-list admin-sidebar-list">
+                    <li><a href="/Home/Index"><span class="am-icon-user"></span>个人资料</a></li>
+                    <li><a href="/Base/ErrorPage"><i class="am-icon-ambulance"></i>错误日志</a></li>
+
+                    <li class="admin-parent">
+                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span>机构信息 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+                            <li><a href="/stageblog/Index" class="am-cf"><span class="am-icon-info"></span>&nbsp;新建<span></span></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="am-cf" data-am-collapse="{target: '#collapse-course'}"><span class="am-icon-leanpub"></span>课程<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-course">
+                            <li><a href="/ShopClass/Index"><span class="am-icon-pencil"></span>课程发布</a></li>
+                            <li><a href="/ShopClass/LookShopClassList"><span class="am-icon-edit">课程查看</span></a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="am-cf" data-am-collapse="{target: '#collapse-production'}"><span class="am-icon-leanpub"></span>作品<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-production">
+                            <li><a href="/Production/Index"><span class="am-icon-pencil"></span>作品发布</a></li>
+                            <li><a href="/Production/ProductionList"><span class="am-icon-pencil"></span>作品查看</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="am-cf" data-am-collapse="{target: '#collapse-studentinteract'}"><span class="am-icon-leanpub"></span>学员互动<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-studentinteract">
+                            <li><a href="/StudentInteract/Index"><span class="am-icon-envelope-o"></span>课程留言查看</a></li>
+                            <li><a href="/StudentInteract/Consult"><span class="am-icon-mail-reply-all"></span>学院咨询查看</a></li>
+                            <li><a href="/StudentInteract/UserClick"><span class="am-icon-hand-o-right"></span>课程点击</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="/Extension/index"><span class="am-icon-bullhorn"></span>app广告推广</a>
+                        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-studentinteract2">
+                            <li><a href="/Extension/ConsumerLog"><span class="am-icon-jpy"></span>推广消费记录</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="am-panel am-panel-default admin-sidebar-panel">
+                    <div class="am-panel-bd">
+                        <p><span class="am-icon-bookmark"></span>公告</p>
+                        <p>欢迎回来</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- sidebar end -->
+
+        <!-- content start -->
+        @RenderBody()
+        <!-- content end -->
+
+    </div>
+
+    <a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+        <span class="am-icon-btn am-icon-th-list"></span>
+    </a>
+
+
+    <!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="/assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+    @*要使用Scripts这个类库，需要在两个Web.config下都添加 <add namespace="System.Web.Optimization"/>*@
+    @*还需要在Global.asax.cs下using  System.Web.Optimization*@
+    @*还需要在BundleConfig.cs 下添加需要注册Js,以及Css*@
+    @*Global.asax.cs添加注册代码：BundleConfig.RegisterBundles(BundleTable.Bundles)*@
+    @*引用时在NuGet里引用，它依赖的比较多  microsoft.asp.net optimization framework*@
+    @Scripts.Render("~/bundles/Script/amauijquery")
+    @RenderSection("scripts", false)
+</body>
+</html>
+<script>
+    $(function () {
+
+
+    })
+</script>

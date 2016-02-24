@@ -1,0 +1,10 @@
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\bin\Release\Selfblog.EF.dll.config
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\bin\Release\Selfblog.EF.dll
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\bin\Release\Selfblog.EF.pdb
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\bin\Release\EntityFramework.dll
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\bin\Release\EntityFramework.SqlServer.dll
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\bin\Release\EntityFramework.xml
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\bin\Release\EntityFramework.SqlServer.xml
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\obj\Release\Selfblog.EF.csprojResolveAssemblyReference.cache
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\obj\Release\Selfblog.EF.dll
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\obj\Release\Selfblog.EF.pdb

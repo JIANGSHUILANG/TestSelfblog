@@ -1,0 +1,275 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminBlog.cshtml";
+}
+
+
+
+<div class="admin-content">
+
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>一些常用模块</small></div>
+    </div>
+
+    <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+        <li><a href="#" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span>
+            <br>
+            今日新增博客<br>
+            @ViewBag.blogcount</a></li>
+        <li><a href="#" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span>
+            <br>
+            今日总点击量<br>
+            @ViewBag.allclick</a></li>
+        <li><a href="#" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span>
+            <br>
+            当前在线人数<br>
+            80088</a></li>
+        <li><a href="#" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span>
+            <br>
+            今日评论总数<br>
+            @ViewBag.commentcount</a></li>
+    </ul>
+
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <div class="am-text-middle">
+                <div class="am-btn-group am-btn-group-xs">
+                    <a href="/stageblog/Index" class="am-btn am-btn-default am-btn-xs" style="color: #3bb4f2;">新增</a>
+                    <span style="width: 15px"></span>
+                    <a href="/show/homepage/index" class="am-btn am-btn-default am-btn-xs" style="color: #3bb4f2;">去主页</a>
+                </div>
+            </div>
+            <table class="am-table am-table-bd am-table-striped admin-content-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>CF客</th>
+                        <th>发布时间</th>
+                        <th>是否置顶</th>
+                        <th>是否推荐</th>
+                        <th>点击量</th>
+                        <th>评论数</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @using Selfblog.DomainObject
+                    @using Selfblog.Infrastructure
+                    @{
+                        if (ViewBag.list != null)
+                        {
+                            var list = (PageOfItems<articleDomainObject>)ViewBag.list;
+                            foreach (var item in list)
+                            {
+                                
+                        <tr>
+                            <td>@item.article_id</td>
+                            <td><a href="/show/homepage/articleinfo?article_id=@item.article_id">@item.article_name</a></td>
+                            <td>@item.article_time.Value</td>
+                            <td>@{
+                                if (item.article_up == 0)
+                                {
+                                <a href='/Home/Isarticle_up_support?typeIsup_support=artice_up&type=1&Article_ID=@item.article_id' class="am-btn am-btn-default am-round">置顶</a>
+                                }
+                                else
+                                {        
+                                <a class="am-badge am-badge-warning am-round">已置顶</a>
+                                <a  href='/Home/Isarticle_up_support?typeIsup_support=artice_up&type=0&Article_ID=@item.article_id' class="am-btn am-btn-default am-btn-xs">取消当前置顶</a> 
+                                }
+                                     
+                            }</td>
+
+                            <td>@{
+                               
+                                if (item.article_support == 0)
+                                { 
+                                <a href="/Home/Isarticle_up_support?typeIsup_support=article_support&type=1&Article_ID=@item.article_id" class="am-btn am-btn-default am-round">推荐至侧边栏</a>
+                                }
+                                else
+                                {  
+                                <a class="am-badge am-badge-success am-round">已推荐</a>    
+                                <a href="/Home/Isarticle_up_support?typeIsup_support=article_support&type=0&Article_ID=@item.article_id" class="am-btn am-btn-default">取消当前推荐</a>
+                                }
+                               
+                            }</td>
+                            <td><span class="am-badge am-badge-secondary">+ @item.article_click</span></td>
+                            <td><span class="am-badge am-badge-success">+ @item.comment_count</span></td>
+                            <td>
+                                <div class="am-text-middle">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <a href="@(string.Format("/stageblog/Showupdate?article_id={0}&addroupdate=1", item.article_id))" class="am-btn am-btn-default am-btn-xs" style="color: #3bb4f2;">修改</a>
+                                        <a href="/Home/Deletearticle?ArticleID=@item.article_id" class="tempclass am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">删除</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                            }
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="am-cf">
+        共 @(ViewBag.AllCount == null ? 0 : ViewBag.AllCount) 条记录
+        <div class="am-fr">
+            <ul class="am-pagination">
+                @using Selfblog.Common
+                @if (ViewBag.pageIndex != null && ViewBag.pageCount != null)
+                {
+                    @MvcHtmlString.Create(MyPageBar.ShowMyPageBar((int)ViewBag.pageIndex, (int)ViewBag.pageCount, "&pageIndexComment=" + ViewBag.commentpageIndex, "pageIndexBlog"));
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="am-g">
+        <div class="am-u-md-6">
+            <div class="am-panel am-panel-default">
+                <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">浏览器统计<span class="am-icon-chevron-down am-fr"></span></div>
+                <div id="collapse-panel-2" class="am-in">
+                    <table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="am-text-center">#</th>
+                                <th>浏览器</th>
+                                <th>访问量</th>
+                            </tr>
+                            <tr>
+                                <td class="am-text-center">
+                                    <img src="/i/examples/admin-chrome.png" alt=""></td>
+                                <td>Google Chrome</td>
+                                <td>3,005</td>
+                            </tr>
+                            <tr>
+                                <td class="am-text-center">
+                                    <img src="/i/examples/admin-firefox.png" alt=""></td>
+                                <td>Mozilla Firefox</td>
+                                <td>2,505</td>
+                            </tr>
+                            <tr>
+                                <td class="am-text-center">
+                                    <img src="/i/examples/admin-ie.png" alt=""></td>
+                                <td>Internet Explorer</td>
+                                <td>1,405</td>
+                            </tr>
+                            <tr>
+                                <td class="am-text-center">
+                                    <img src="/i/examples/admin-opera.png" alt=""></td>
+                                <td>Opera</td>
+                                <td>4,005</td>
+                            </tr>
+                            <tr>
+                                <td class="am-text-center">
+                                    <img src="/i/examples/admin-safari.png" alt=""></td>
+                                <td>Safari</td>
+                                <td>505</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="am-u-md-6">
+            <div class="am-panel am-panel-default">
+                <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">最近留言<span class="am-icon-chevron-down am-fr"></span></div>
+                <div class="am-panel-bd am-collapse am-in am-cf" id="collapse-panel-3">
+                    <ul class="am-comments-list admin-content-comment">
+                        @{
+                            if (ViewBag.commentlist != null)
+                            {
+                                var commentlist = (PageOfItems<user_commentDomainObject>)ViewBag.commentlist;
+                                foreach (var item in commentlist)
+                                {     
+                            <li class="ds-post">
+                                <a href="#">
+                                    @{
+                                    if (item.user_id == 0)
+                                    {
+                                        <img src="~/Content/Images/admin/1ecedeede84abbf371b9d8d656bb4265.png" alt="" class="am-comment-avatar" width="48" height="48" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@item.userheadimage"  alt="" class="am-comment-avatar" width="48" height="48" />
+                                    }
+                                    }
+                                </a>
+                                <div class="am-comment-main">
+                                    <header class="am-comment-hd">
+                                        <div class="am-comment-meta">
+                                            <a href="#" class="am-comment-author">@(string.IsNullOrEmpty(item.username) ? "游客" : item.username)</a> 评论于 <time>@item.comment_time</time>
+                                            <a style="float: right; cursor: pointer;">@(item.article_name.Length > 20 ? item.article_name.Substring(0, 20) + "..." : item.article_name)</a>
+                                        </div>
+
+                                    </header>
+                                    <div class="am-comment-bd">
+                                        <p>@item.comment</p>
+                                        @{
+                                    if (item.chirden != null)
+                                    {
+                                            <ol id="ds-ctx" style="list-style-type: none;">
+                                                @foreach (var chir in item.chirden)
+                                                {
+                                                    <blockquote style="color: #f30909; background: #eee;">
+                                                        <li class="ds-ctx-entry">
+                                                            <div class="ds-ctx-body">
+                                                                <div class="ds-ctx-head">
+                                                                    <a rel="nofollow author" target="_blank">@(string.IsNullOrEmpty(chir.username) ? "游客" : chir.username)</a> &nbsp;&nbsp;&nbsp;
+                                                                    <a href="undefined" target="_blank" rel="nofollow" class="ds-time" datetime="2015-12-01T12:14:35+08:00" title="2015年12月1日 下午12:14:35">@chir.rec_time</a>
+                                                                    <div class="ds-ctx-nth" style="float: right;" title="2015年12月1日 下午12:14:35">1楼</div>
+                                                                </div>
+                                                                <div class="ds-ctx-content">
+                                                                    回复内容： @chir.rec_comment
+                                                                    <div class="ds-comment-actions">
+                                                                        <a class="ds-post-likes" href="javascript:void(0);">
+                                                                            <span class="ds-icon ds-icon-like"></span>顶</a>&nbsp;&nbsp;&nbsp;
+                                                                        <a class="ds-post-repost" href="javascript:void(0);">
+                                                                            <span class="ds-icon ds-icon-share"></span>转发</a>&nbsp;&nbsp;&nbsp;
+                                                                        <a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </blockquote>
+                                                }
+
+                                            </ol>
+                                    }
+                                              
+                                        }
+
+                                    </div>
+                                </div>
+                            </li>
+
+                                }
+                            }
+                        }
+
+                    </ul>
+                    <div class="am-cf">
+                        <div class="am-fr">
+                            <ul class="am-pagination" id="pagetest">
+                                @using Selfblog.Common
+                                @if (ViewBag.commentpageIndex != null && ViewBag.commentpageCount != null)
+                                {
+                                    @MvcHtmlString.Create(MyPageBar.ShowMyPageBar((int)ViewBag.commentpageIndex, (int)ViewBag.commentpageCount, "&pageIndexBlog=" + ViewBag.pageIndex, "pageIndexComment"));
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+      
+    </script>
+}

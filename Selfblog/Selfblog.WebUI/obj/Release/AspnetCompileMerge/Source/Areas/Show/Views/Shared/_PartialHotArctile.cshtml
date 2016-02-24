@@ -1,0 +1,31 @@
+﻿@using Selfblog.DomainObject
+@model List<articleDomainObject>
+<aside id="new_hotarticles">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="#">最热文章</a>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group list-group-flush">
+                @{
+                    if (Model != null)
+                    {
+                        var articlelist = (List<articleDomainObject>)ViewBag.hotarticlelist;
+                        foreach (var item in articlelist)
+                        {
+                    <li class="list-group-item">
+                        <span class="post-title">
+                            <a href="/show/homepage/articleinfo?article_id=@item.article_id" title="@item.article_name" style="color:#666666;">
+                                @(string.IsNullOrWhiteSpace(item.article_name) ? "............" : (item.article_name.Length > 25 ? item.article_name.Substring(0, 25) + "..." : item.article_name))
+                            </a>
+                        </span>
+                        <span class="badge" style="background-color: #d9534f;">@item.article_click</span>
+                    </li>
+                        }
+                    }
+                }
+
+            </ul>
+        </div>
+    </div>
+</aside>

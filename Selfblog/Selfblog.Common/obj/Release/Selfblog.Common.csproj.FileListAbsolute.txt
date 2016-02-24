@@ -1,0 +1,9 @@
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.Common\bin\Release\Selfblog.Common.dll
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.Common\bin\Release\Selfblog.Common.pdb
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.Common\bin\Release\MongoDB.dll
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.Common\bin\Release\MongoDB.GridFS.dll
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.Common\bin\Release\MongoDB.xml
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.Common\bin\Release\MongoDB.GridFS.xml
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.Common\obj\Release\Selfblog.Common.csprojResolveAssemblyReference.cache
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.Common\obj\Release\Selfblog.Common.dll
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.Common\obj\Release\Selfblog.Common.pdb

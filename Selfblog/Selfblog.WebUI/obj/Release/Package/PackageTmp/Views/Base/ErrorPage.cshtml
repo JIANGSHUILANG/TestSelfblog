@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Selfblog.Infrastructure.ErrorModel>
+
+@{
+    ViewBag.Title = "ErrorPage";
+    Layout = "~/Views/Shared/_LayoutAdminBlog.cshtml";
+}
+
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">错误日志</strong> / <small>Error Log</small></div>
+    </div>
+
+    <hr />
+  
+    <div class="am-g error-log">
+        <div class="am-u-sm-12 am-u-sm-centered">
+            <pre class="am-pre-scrollable">
+            @{
+                if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+<span class="am-text-success">@item.Time</span> <span class="am-text-danger">@item.TypeValue</span> <a class="show" href="javascript:;;" onclick="showerror('@(Html.Raw(item.ControllName))')" style="cursor:pointer" title="@(Html.Raw(item.ControllName))">@item.ControllName</a> <span>@(item.Message.Length > 15 ? item.Message.Substring(0, 15) + "......" : item.Message)</span> <a href="javascript:;;" class="show" onclick="showerror('@(Html.Raw(item.StackTrace))')" style="cursor:pointer" title="@item.StackTrace">@(item.StackTrace.Length > 20 ? item.StackTrace.Substring(0, 20) + "......" : item.StackTrace)</a>
+                    }
+                }
+
+            }
+           </pre>
+        </div>
+    </div>
+
+    <div class="am-cf">
+        @*共 @ViewBag.AllCount 条记录*@
+        <div class="am-fr">
+            <ul class="am-pagination">
+                @using Selfblog.Common
+                @if (ViewBag.pageIndex != null && ViewBag.pageCount != null)
+                {
+                    @MvcHtmlString.Create(MyPageBar.ShowMyPageBar((int)ViewBag.pageIndex, (int)ViewBag.pageCount, ViewBag.parms == null ? null : ViewBag.parms));
+                }
+            </ul>
+        </div>
+    </div>
+
+@section scripts{
+    <script type="text/javascript">
+        function showerror(message) {
+            //var html = "";
+            //html += "<div>" + message + "</div>";
+
+            //$('.show').popover({
+            //    theme: "primary",
+            //    trigger: 'hover',
+            //    content: html
+            //})
+        }
+    </script>
+}

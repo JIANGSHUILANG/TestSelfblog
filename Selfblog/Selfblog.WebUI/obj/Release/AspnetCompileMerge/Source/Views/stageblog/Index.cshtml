@@ -1,0 +1,186 @@
+﻿@model Selfblog.DomainObject.articleDomainObject
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminBlog.cshtml";
+}
+
+<style type="text/css">
+    .messageclass {
+        color: red;
+    }
+</style>
+
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class='am-text-primary am-text-lg'>作品</strong> / <small>作品发布</small></div>
+    </div>
+    <div class="am-u-sm-10 am-u-md-6 am-u-md-pull-15">
+        @using (Html.BeginForm("AddUpdateBlog", "stageblog", FormMethod.Post, new { @class = "am-form am-form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            
+            <fieldset>
+                <legend></legend>
+                <input type="hidden" name="addorupdate" value="@ViewBag.addorupdate" />
+                @Html.HiddenFor(model => model.article_id)
+
+                <div class="am-form-group">
+                    @Html.LabelFor(model => model.article_name)
+                    <div class="am-g">
+                        <div class="am-u-sm-7">
+                            @Html.EditorFor(model => model.article_name)
+                        </div>
+                        <div class="am-u-sm-5">
+                            @Html.ValidationMessageFor(model => model.article_name, null, new { @class = "messageclass" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-form-group am-form-file">
+                    @Html.Label("上传标题图片")
+                    <p>
+                        <button type="button" onclick="showimage(this,'titleimage')" class="am-btn am-btn-default">上传标题图片</button>
+                    </p>
+                    <table class="temp">
+                        <tr>
+                        </tr>
+                    </table>
+                    <div style="width: 800px; height: 0px;" id="titleimage">
+                        <div class="img-container">
+                            <img src="~/Content/Images/testimage/95f31ccc984b703a6d369b62299774e3.jpg" />
+                        </div>
+                        <div class="img-operation-btns" data-index="1">
+                            <label class="am-btn am-btn-primary am-radius" for="inputImage" title="Upload image file">
+                                <input type="file" class="sr-only inputImage" id="inputImage" name="file" accept="image/*">
+                                <span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">上传图片
+                                </span>
+                            </label>
+                            <button type="button" class="am-btn am-btn-primary am-radius" data-method="getCroppedCanvas" data-type="title_image">
+                                <span class="docs-tooltip" onclick="onsubmitformimage()" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;)">保存图片
+                                </span>
+                            </button>
+                            <a href="javascript:;;" onclick="unsave(this)" class="am-btn am-btn-primary am-radius">取消保存
+                            </a>
+                            <input type="hidden" name="savebase64" id="savebase64" />
+                            @Html.Hidden("photo_id")
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    @Html.LabelFor(model => model.article_author)
+                    <div class="am-g">
+                        <div class="am-u-sm-7">
+                            @Html.EditorFor(model => model.article_author)
+
+                        </div>
+                        <div class="am-u-sm-5">
+                            @Html.ValidationMessageFor(model => model.article_author, null, new { @class = "messageclass" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    @Html.LabelFor(model => model.article_codeurl)
+                    <div class="am-g">
+                        <div class="am-u-sm-7">
+                            @Html.EditorFor(model => model.article_codeurl)
+                        </div>
+                        <div class="am-u-sm-5">
+                            @Html.ValidationMessageFor(model => model.article_codeurl, null, new { @class = "messageclass" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-form-group" style="width: 400px;">
+                    @Html.Label("分类")
+                    <div class="am-g">
+                        <div class="am-u-sm-10">
+                            @Html.DropDownList("categorylist", ViewBag.categorylist as List<SelectListItem>, "---请选择文章分类---")
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    @Html.LabelFor(model => model.article_type)
+                    <div class="am-g">
+                        <div class="am-u-sm-10">
+                            @*0为私有，1为公开*@
+                            @Html.RadioButtonFor(model => model.article_type, 0)私有     
+                            &nbsp;&nbsp;&nbsp;
+                            @Html.RadioButtonFor(model => model.article_type, 1, new { @checked = "checked" })公开
+                          
+                            @Html.ValidationMessageFor(model => model.article_type)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <div class="am-g">
+                        <div class="am-u-sm-10">
+                            <input type="checkbox" name="article_up" />置顶
+                                &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" name="article_support" />推荐
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-form-group" style="width: 400px;">
+                    @Html.LabelFor(model => model.article_content)
+                    <div class="am-g">
+                        <div class="am-u-sm-10">
+                            @Html.TextAreaFor(model => model.article_content, new { @id = "content1", @style = "width: 540px; height: 230px; resize: none;" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <div class="am-u-sm-10">
+                        <button type="submit" class="am-btn am-btn-primary">保存</button>
+                        <a href="/stageblog/Index" class="am-btn am-btn-primary">取消</a>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+    <input type="hidden"  id="allurl"  value="@ViewBag.url"/>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/Script/jqueryval")
+    <link href="~/Content/Css/assets/css/cropper.min.css" rel="stylesheet" />
+    <link href="~/Content/Css/assets/css/upload.css" rel="stylesheet" />
+    <script src="~/Content/Css/assets/js/cropper.min.js"></script>
+    <script src="~/Content/Css/assets/js/articleupload.js"></script>
+    <script src="~/Content/Script/kindEdit/newkindeditor.js"></script>
+    <script src="~/Content/Script/kindEdit/lang/zh_CN.js"></script>
+    <script src="~/MyScript/addupdateblogup.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            KindEditor.ready(function (K) {
+                window.editor = K.create('#content1', {
+                    uploadJson: '/shopclass/ckeditorUploadImage',
+                    items: [
+            				'cut', 'copy', 'paste', 'fontname', 'fontsize', '|', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline',
+            				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', '|', 'image'],
+                    afterBlur: function () {
+                        this.sync();
+                    },
+                    afterChange: function () {
+                        //var limitNum = 2000;  //设定限制字数
+                        //var pattern = "";
+                        //if (parseInt(this.count()) > limitNum) {
+                        //    pattern = '<font color="red">字数已超出限制请适当删除部分内容</font>';
+                        //    $('#content1length').html(pattern); //输入显示  
+                        //} else {
+
+                        //    $('#content1length').html(""); //输入显示  
+                        //}
+                    }
+                });
+            });
+        })
+    </script>
+}

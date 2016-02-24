@@ -1,0 +1,39 @@
+﻿@using Selfblog.DomainObject
+@model List<categoryDomainObject>
+<aside id="zan_login-2">
+    <div class="panel panel-zan">
+        <div id="weixin">
+            <p>关注微信：</p>
+            <img src="~/Content/Images/testimage/weixin.jpg" alt="段亮公众微信" width="260" height="230" data-bd-imgshare-binded="1">
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">标签</div>
+            <div class="panel-body">
+                @{
+                    
+                    if (Model != null)
+                    {
+                    <a href="/show/homepage/index" class="label label-default">全部
+                        <span class="" style="color: #FFFFFF; font-size: 15px; text-shadow: #9accf1 0 1px 0;">
+                            (@(Model.Sum(c => c.articleDomainObjects.Count)))
+                        </span>
+                    </a>
+                        string[] lables = new string[] { "label-default", "label-success", "label-info", "label-warning", "label-danger" };
+
+                        Random ran = new Random();
+
+                        foreach (var item in Model)
+                        {
+                            string color = lables[ran.Next(0, lables.Length)];
+                    <a href="/show/homepage/index?categroy_id=@item.category_id" class="label @color">@item.category_name
+                        <span class="" style="color: #FFFFFF; font-size: 15px; text-shadow: #9accf1 0 1px 0;">(@(item.articleDomainObjects == null ? 0 : item.articleDomainObjects.Count))
+                        </span>
+                    </a>
+                        }
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</aside>

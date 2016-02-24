@@ -1,0 +1,5 @@
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.DomainObject\bin\Release\Selfblog.DomainObject.dll
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.DomainObject\bin\Release\Selfblog.DomainObject.pdb
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.DomainObject\obj\Release\Selfblog.DomainObject.csprojResolveAssemblyReference.cache
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.DomainObject\obj\Release\Selfblog.DomainObject.dll
+G:\CloneFileGitSelfblog\Selfblog\Selfblog.DomainObject\obj\Release\Selfblog.DomainObject.pdb
