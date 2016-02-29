@@ -54,7 +54,7 @@
                         <br />
                         <div class="content-article">
                             <figure class="thumbnail" style="width: 240px; float: left !important;">
-                                <img width="200" height="200" style="background-size: cover;" src="@string.Format("~~{0}", article.photo.photo_imageurl)" />
+                                <img width="200" height="200" style="background-size: cover;" src="@string.Format("{0}", article.photo.photo_imageurl)" />
                             </figure>
                             <div class="alert alert-zan" style="padding-top: 0px !important;">
                                 @(string.IsNullOrWhiteSpace(article.article_content) ? "文章暂无内容!" : (article.article_content.Length > 300 ? article.article_content.Substring(0, 300) + "......" : article.article_content))
@@ -77,7 +77,7 @@
                         <br />
                         <div class="content-article">
                             <figure class="thumbnail">
-                                <img width="730" height="300" style="background-size: cover;" src="@string.Format("~~{0}", article.photo.photo_imageurl)" />
+                                <img width="730" height="300" style="background-size: cover;" src="@string.Format("{0}", article.photo.photo_imageurl)" />
                             </figure>
                             <div class="alert alert-zan" style="padding-top: 0px !important;">
                                 @(string.IsNullOrWhiteSpace(article.article_content) ? "文章暂无内容!" : (article.article_content.Length > 300 ? article.article_content.Substring(0, 300) + "......" : article.article_content))
