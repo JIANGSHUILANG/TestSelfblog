@@ -1,0 +1,229 @@
+2016-03-01 12:29:39,403 [38] ERROR error [(null)] - MVC框架错误
+ ,fe73aeee-cc55-4f84-8639-7634b876a3dd
+,未找到视图“AddorUpdateCateory”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/category/AddorUpdateCateory.aspx
+~/Views/category/AddorUpdateCateory.ascx
+~/Views/Shared/AddorUpdateCateory.aspx
+~/Views/Shared/AddorUpdateCateory.ascx
+~/Views/category/AddorUpdateCateory.cshtml
+~/Views/category/AddorUpdateCateory.vbhtml
+~/Views/Shared/AddorUpdateCateory.cshtml
+~/Views/Shared/AddorUpdateCateory.vbhtml
+,   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ 
+ 
+ 
+
+
+2016-03-01 12:46:37,181 [75] ERROR error [(null)] - MVC框架错误
+ ,7c7e06b7-187d-4d0c-8903-d646f54bde16
+,未找到视图“AddorUpdateCateory”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/category/AddorUpdateCateory.aspx
+~/Views/category/AddorUpdateCateory.ascx
+~/Views/Shared/AddorUpdateCateory.aspx
+~/Views/Shared/AddorUpdateCateory.ascx
+~/Views/category/AddorUpdateCateory.cshtml
+~/Views/category/AddorUpdateCateory.vbhtml
+~/Views/Shared/AddorUpdateCateory.cshtml
+~/Views/Shared/AddorUpdateCateory.vbhtml
+,   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ 
+ 
+ 
+
+
+2016-03-01 12:47:48,060 [19] ERROR error [(null)] - MVC框架错误
+ ,ec6bfbee-81b7-4705-bde0-9d5d0153fc48
+,未找到视图“AddorUpdateCateory”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/category/AddorUpdateCateory.aspx
+~/Views/category/AddorUpdateCateory.ascx
+~/Views/Shared/AddorUpdateCateory.aspx
+~/Views/Shared/AddorUpdateCateory.ascx
+~/Views/category/AddorUpdateCateory.cshtml
+~/Views/category/AddorUpdateCateory.vbhtml
+~/Views/Shared/AddorUpdateCateory.cshtml
+~/Views/Shared/AddorUpdateCateory.vbhtml
+,   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ 
+ 
+ 
+
+
+2016-03-01 12:48:34,996 [23] ERROR error [(null)] - MVC框架错误
+ ,433d6fe2-7c9f-4b9f-b8d0-667de6d68c40
+,未找到视图“AddorUpdateCateory”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/category/AddorUpdateCateory.aspx
+~/Views/category/AddorUpdateCateory.ascx
+~/Views/Shared/AddorUpdateCateory.aspx
+~/Views/Shared/AddorUpdateCateory.ascx
+~/Views/category/AddorUpdateCateory.cshtml
+~/Views/category/AddorUpdateCateory.vbhtml
+~/Views/Shared/AddorUpdateCateory.cshtml
+~/Views/Shared/AddorUpdateCateory.vbhtml
+,   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ 
+ 
+ 
+
+
+2016-03-01 12:48:45,406 [23] ERROR error [(null)] - MVC框架错误
+ ,6f7d6cff-c12f-4596-84d9-7c14a4e65956
+,未找到视图“AddorUpdateCateory”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/category/AddorUpdateCateory.aspx
+~/Views/category/AddorUpdateCateory.ascx
+~/Views/Shared/AddorUpdateCateory.aspx
+~/Views/Shared/AddorUpdateCateory.ascx
+~/Views/category/AddorUpdateCateory.cshtml
+~/Views/category/AddorUpdateCateory.vbhtml
+~/Views/Shared/AddorUpdateCateory.cshtml
+~/Views/Shared/AddorUpdateCateory.vbhtml
+,   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ 
+ 
+ 
+
+
+2016-03-01 12:49:02,006 [23] ERROR error [(null)] - MVC框架错误
+ ,8ff687c5-022b-43ec-8816-088eb8520d7e
+,未找到视图“AddorUpdateCateory”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/category/AddorUpdateCateory.aspx
+~/Views/category/AddorUpdateCateory.ascx
+~/Views/Shared/AddorUpdateCateory.aspx
+~/Views/Shared/AddorUpdateCateory.ascx
+~/Views/category/AddorUpdateCateory.cshtml
+~/Views/category/AddorUpdateCateory.vbhtml
+~/Views/Shared/AddorUpdateCateory.cshtml
+~/Views/Shared/AddorUpdateCateory.vbhtml
+,   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ 
+ 
+ 
+
+
+2016-03-01 12:49:26,405 [23] ERROR error [(null)] - MVC框架错误
+ ,8d09078a-9b91-4d77-af9a-8643022b8883
+,未找到视图“AddorUpdateCateory”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/category/AddorUpdateCateory.aspx
+~/Views/category/AddorUpdateCateory.ascx
+~/Views/Shared/AddorUpdateCateory.aspx
+~/Views/Shared/AddorUpdateCateory.ascx
+~/Views/category/AddorUpdateCateory.cshtml
+~/Views/category/AddorUpdateCateory.vbhtml
+~/Views/Shared/AddorUpdateCateory.cshtml
+~/Views/Shared/AddorUpdateCateory.vbhtml
+,   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ 
+ 
+ 
+
+
+2016-03-01 12:59:13,907 [24] ERROR error [(null)] - MVC框架错误
+ ,3c885d1e-50aa-4dcd-ab56-7918bc49eefc
+,输入字符串的格式不正确。
+,   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Convert.ToInt32(String value)
+   在 Selfblog.WebUI.Controllers.categoryController.AddorUpdateCateory(categoryDomainObject cateory, Int32 addorupdate) 位置 g:\CloneFileGitSelfblog\Selfblog\Selfblog.WebUI\Controllers\categoryController.cs:行号 36
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ 
+ 
+ 
+
+
+2016-03-01 12:59:22,929 [24] ERROR error [(null)] - MVC框架错误
+ ,169c2e72-fd56-4108-ab54-acf92f826853
+,输入字符串的格式不正确。
+,   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Convert.ToInt32(String value)
+   在 Selfblog.WebUI.Controllers.categoryController.AddorUpdateCateory(categoryDomainObject cateory, Int32 addorupdate) 位置 g:\CloneFileGitSelfblog\Selfblog\Selfblog.WebUI\Controllers\categoryController.cs:行号 36
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ 
+ 
+ 
+
+

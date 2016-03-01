@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,6 +12,20 @@ namespace Selfblog.WebUI.Areas.Show.Controllers
     {
         //
         // GET: /Show/Homepage/
+
+        //1，得到网页上的链接地址：
+        //string matchString = @"<a[^>]+href=\s*(?:'(?<href>[^']+)'|""(?<href>[^""]+)""|(?<href>[^>\s]+))\s*[^>]*>";
+        //2，得到网页的标题：
+        //string matchString = @"<title>(?<title>.*)</title>";
+        //3，去掉网页中的所有的html标记：
+        //string temp = Regex.Replace(html, "<[^>]*>", ""); //html是一个要去除html标记的文档
+
+        //4, string matchString = @"<title>([\S\s\t]*?)</title>";
+        //5,js去掉所有html标记的函数： 
+        //function delHtmlTag(str)
+        //{
+        //return str.replace(/<[^>]+>/g,"");//去掉所有的html标记
+
 
         public ActionResult Index(
             int pageIndex = 1,
@@ -23,7 +38,7 @@ namespace Selfblog.WebUI.Areas.Show.Controllers
             var categorylist = categoryservice.GetCategorycoverarticlecount();
             if (categorylist != null)
                 ViewBag.categorylist = categorylist;
-
+           
             //所有文章
             var allarticlelist = articleservice.Getarticles(pageIndex, 4, categroy_id, author, click, comment);
             if (allarticlelist != null)
@@ -86,5 +101,62 @@ namespace Selfblog.WebUI.Areas.Show.Controllers
             return Newtonsoft.Json.JsonConvert.SerializeObject(new { type = 1,clicktype=clicktype,message = "操作成功 !" });
         }
 
+     
+
+    }
+
+}
+
+public static class Extension
+{
+    /// <summary>
+    /// 删除html代码 保留 IMG P BR三个标签
+    /// </summary>
+    /// <param name="str">所需要删除HTML代码的字符串</param>
+    /// <returns></returns>
+    public static string ReplaceHtml_IPB(this string str)
+    {
+        if (str != "" && str != null)
+        {
+            //删除内含的 样式表代码
+            Regex CutStyle = new Regex(@"<style([^>])*>(\w|\W)*?</style([^>])*>", RegexOptions.IgnoreCase);
+            String TempStr = CutStyle.Replace(str, "");
+
+            //<([^>]+)> 不过滤 img标签
+            TempStr = TempStr.Replace("</p>", "[/p]");
+            TempStr = TempStr.Replace("</P>", "[/p]");
+            TempStr = TempStr.Replace("<p>", "[p]");
+            TempStr = TempStr.Replace("<P>", "[p]");
+
+
+            Regex BrHtml = new Regex("<br(.*?)>", RegexOptions.IgnoreCase);
+            TempStr = BrHtml.Replace(TempStr, "[br/]");
+            Regex SpanHtml1 = new Regex("<span", RegexOptions.IgnoreCase);
+            TempStr = SpanHtml1.Replace(TempStr, "[span");
+            Regex SpanHtml2 = new Regex("</span>", RegexOptions.IgnoreCase);
+            TempStr = SpanHtml2.Replace(TempStr, "[/span]");
+            Regex ImgHtml = new Regex("<img", RegexOptions.IgnoreCase);
+            TempStr = ImgHtml.Replace(TempStr, "[img");
+            Regex CutHtml = new Regex("<([^>]+)>", RegexOptions.IgnoreCase);
+            TempStr = CutHtml.Replace(TempStr, "");
+            //TempStr = TempStr.Replace ("/>" , ">");
+            //Regex ImgHtml=new Regex("<img",RegexOptions.IgnoreCase);
+            //格式化现有代码
+            //TempStr = HttpUtility.HtmlEncode(TempStr);
+
+
+            TempStr = TempStr.Replace("[img", "<img");
+            TempStr = TempStr.Replace("[span", "<span");
+            TempStr = TempStr.Replace("[p]", "<p>");
+            TempStr = TempStr.Replace("[/p]", "</p>");
+            TempStr = TempStr.Replace("[br/]", "<br/>");
+            TempStr = TempStr.Replace("[/span]", "</span>");
+            return TempStr;
+
+        }
+        else
+        {
+            return "";
+        }
     }
 }

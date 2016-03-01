@@ -133,6 +133,7 @@
     <Compile Include="Areas\Show\Controllers\HomepageController.cs" />
     <Compile Include="Areas\Show\ShowAreaRegistration.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\categoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\stageblogController.cs" />
     <Compile Include="Global.asax.cs">
@@ -194,6 +195,7 @@
     <Content Include="Content\Css\assets\js\handlebars.min.js" />
     <Content Include="Content\Css\assets\js\jquery.min.js" />
     <Content Include="Content\Css\assets\js\articleupload.js" />
+    <Content Include="Content\Css\assets\js\categoryupload.js" />
     <Content Include="Content\Css\cropper.min.css" />
     <Content Include="Content\Css\upload.css" />
     <Content Include="Content\Images\admin\1ecedeede84abbf371b9d8d656bb4265.png" />
@@ -514,6 +516,7 @@
     <Content Include="Views\stageblog\Index.cshtml" />
     <Content Include="Views\stageblog\CT.cshtml" />
     <Content Include="Views\stageblog\Showupdate.cshtml" />
+    <Content Include="Views\category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

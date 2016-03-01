@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminBlog.cshtml";
+}
+@model Selfblog.DomainObject.categoryDomainObject
+
+<style type="text/css">
+    .messageclass {
+        color: red;
+    }
+</style>
+
+<div class="admin-content" style="height: 1400px;">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">分类</strong> / <small>添加文章分类</small></div>
+    </div>
+
+    @using (Html.BeginForm("AddorUpdateCateory", "category", FormMethod.Post, new { @class = "am-form am-form-horizontal" }))
+    { 
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="am-form-group">
+            @Html.LabelFor(model => model.category_name)
+            <div class="am-g">
+                <div class="am-u-sm-3">
+                    @Html.EditorFor(model => model.category_name)
+                </div>
+                <div class="am-u-sm-3">
+                    @Html.ValidationMessageFor(model => model.category_name, null, new { @class = "messageclass" })
+                </div>
+                <div class="am-u-sm-6"></div>
+            </div>
+        </div>
+        
+        <div class="am-form-group">
+            <div class="am-u-sm-3">
+                @Html.Label("所属父类")：
+                 @Html.DropDownList("categorylist", ViewBag.categorylist as List<SelectListItem>, "---请选择文章分类---")
+            </div>
+            <div class="am-u-sm-3"></div>
+            <div class="am-u-sm-6"></div>
+        </div>
+         
+        <div class="am-form-group">
+            @Html.Label("上传分类图片")
+            <p>
+                <button type="button" onclick="showimage(this,'titleimage')" class="am-btn am-btn-default">上传标题图片</button>
+            </p>
+            <table class="temp">
+                <tr>
+                </tr>
+            </table>
+            <div style="width: 800px; height: 0px;" id="titleimage">
+                <div class="img-container">
+                    <img src="~/Content/Images/testimage/95f31ccc984b703a6d369b62299774e3.jpg" />
+                </div>
+                <div class="img-operation-btns" data-index="1">
+                    <label class="am-btn am-btn-primary am-radius" for="inputImage" title="Upload image file">
+                        <input type="file" class="sr-only inputImage" id="inputImage" name="file" accept="image/*">
+                        <span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">上传图片
+                                </span>
+                    </label>
+                    <button type="button" class="am-btn am-btn-primary am-radius" data-method="getCroppedCanvas" data-type="title_image">
+                        <span class="docs-tooltip" onclick="onsubmitformimage()" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;)">保存图片
+                                </span>
+                    </button>
+                    <a href="javascript:;;" onclick="unsave(this)" class="am-btn am-btn-primary am-radius">取消保存
+                            </a>
+                    <input type="hidden" name="savebase64" id="savebase64" />
+                    @Html.Hidden("photo_id")
+                </div>
+            </div>
+        </div>
+        
+        <div class="am-form-group" style="margin-top: 500px;">
+            <div class="am-u-sm-10">
+                <button type="submit" class="am-btn am-btn-primary">保存</button>
+                <a href="/category/Index" class="am-btn am-btn-primary">取消</a>
+            </div>
+        </div>
+        
+        @Html.Hidden("addorupdate",(object)ViewBag.addorupdate)
+    }
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/Script/jqueryval")
+    <link href="~/Content/Css/assets/css/cropper.min.css" rel="stylesheet" />
+    <link href="~/Content/Css/assets/css/upload.css" rel="stylesheet" />
+    <script src="~/Content/Css/assets/js/cropper.min.js"></script>
+    <script src="~/Content/Css/assets/js/categoryupload.js"></script>
+    <script>
+
+        function showimage(dom, id) {
+            $("#" + id).show();
+            $("#" + id).css("height", "500px");
+        }
+
+        function unsave(dom, imageurl) {
+            $(dom).next().data("value", 0);
+            $(dom).parents('.img-operation-btns').parent().css('height', '0px');
+        }
+
+        function unimage(dom) {
+            $(dom).parent().remove();
+            $("#photo_id").val("");
+        }
+
+        //保存图片
+        function onsubmitformimage() {
+            $('.img-operation-btns button').click();
+            var imgurl = $("#savebase64").val();
+            if (imgurl.trim() != "") {
+
+                $.ajax({
+                    url: "/Base/SaveImage", //当前页面与此api不在同一个域，所以这种调用不行 /api/image/save  Base/SaveImage
+                    data: {
+                        base64value: imgurl,
+                        photo_type: 1
+                    },
+                    type: "post",
+                    success: function (json) {
+                        if (json == null) {
+                            alert("上传失败");
+                            return;
+                        }
+                        //status = 1, message = "图片上传成功", imageurl = url, image_id = image_id
+                        var data = $.parseJSON(JSON.parse(json));
+                        $("#photo_id").val(data.image_id);
+                        var url = data.imageurl;
+                        $(".temp tr").empty();
+                        $(".temp tr").append('<td style="text-align:center;"><img src="' + url + '" width="236" height="177" class="am-img-thumbnail" onclick="imageclick(this)" /><br /><a href="javascript:;;" onclick="unimage(this)"   data-type="title_image"  data-value="' + url + '" class="am-close am-close-alt am-icon-times"></a></td>');
+                    }
+                })
+            }
+        }
+    </script>
+}

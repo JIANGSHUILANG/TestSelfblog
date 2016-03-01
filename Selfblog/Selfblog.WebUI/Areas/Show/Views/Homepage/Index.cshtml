@@ -79,7 +79,7 @@
                             <figure class="thumbnail">
                                 <img width="730" height="300" style="background-size: cover;" src="@string.Format("{0}", article.photo.photo_imageurl)" />
                             </figure>
-                            <div class="alert alert-zan" style="padding-top: 0px !important;">
+                            <div class="alert alert-zan" style="padding-top: 0px !important;" >
                                 @(string.IsNullOrWhiteSpace(article.article_content) ? "文章暂无内容!" : (article.article_content.Length > 300 ? article.article_content.Substring(0, 300) + "......" : article.article_content))
                             </div>
                         </div>
@@ -131,3 +131,20 @@
 
     </aside>
 </div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            var alltitles = $(".alert");
+            for (var i = 0; i < alltitles.length; i++) {
+                var text = $(alltitles[i]).text();
+                $(alltitles[i]).text(delHtmlTag(text));
+            }
+        })
+
+        function delHtmlTag(str) {
+            str = str.replace(/<[^>]+>/g, "");//去掉所有的html标记
+            return str;
+        }
+    </script>
+    }

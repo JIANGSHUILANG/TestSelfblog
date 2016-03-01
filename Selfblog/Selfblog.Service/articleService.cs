@@ -133,6 +133,7 @@ namespace Selfblog.Service
                             article_content = c.article_content,
                             article_goodup = c.article_goodup,
                             article_baddown = c.article_baddown,
+                            article_status = c.article_status,
                             comment_count = (from u in context.user_comment where c.article_id == u.article_id select u).Count(),
                             photo = (from p in context.photo
                                      join g in context.category

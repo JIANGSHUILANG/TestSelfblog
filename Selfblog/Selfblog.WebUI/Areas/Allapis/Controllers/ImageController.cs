@@ -18,6 +18,7 @@ namespace Selfblog.WebUI.Areas.Allapis.Controllers
     {
         public string base64str { get; set; }
         public int photo_type { get; set; }
+        public string imagename { get; set; }
     }
 
     public class Result
@@ -41,7 +42,7 @@ namespace Selfblog.WebUI.Areas.Allapis.Controllers
         {
             //base64传过来的时候
             int image_id;
-            string url = Base64stringToImage(data.base64str.Replace(" ", "+"), data.photo_type, out image_id);
+            string url = Base64stringToImage(data.base64str.Replace(" ", "+"), data.photo_type, data.imagename, out image_id);
             Result result = new Result();
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -62,7 +63,7 @@ namespace Selfblog.WebUI.Areas.Allapis.Controllers
         /// base64str转为图片保存
         /// </summary>
         /// <param name="base64str">base64str字符串</param>
-        private string Base64stringToImage(string base64str, int photo_type, out int image_id)
+        private string Base64stringToImage(string base64str, int photo_type, string imagename, out int image_id)
         {
             string dir = string.Empty;
             image_id = 0;
@@ -71,7 +72,14 @@ namespace Selfblog.WebUI.Areas.Allapis.Controllers
                 var butter = Convert.FromBase64String(base64str);
                 MemoryStream ms = new MemoryStream(butter);
                 Bitmap bitmap = new Bitmap(ms);
-                dir = string.Format("/UploadImage/{0}.jpg", Guid.NewGuid().ToString());
+                if (string.IsNullOrWhiteSpace(imagename))
+                {
+                    dir = string.Format("/UploadImage/{0}.jpg", Guid.NewGuid().ToString());
+                }
+                else
+                {
+                    dir = string.Format("/Content/Images/language/{0}.jpg", imagename);
+                }
                 photoDomainObject photo = new photoDomainObject() { photo_imageurl = dir, photo_typeid = photo_type };
                 var Photo = photoservice.AddEntity(photo);
                 image_id = Photo.photo_id;

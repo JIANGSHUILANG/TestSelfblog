@@ -21,6 +21,7 @@ namespace Selfblog.Service
                           {
                               category_id = c.category_id,
                               category_name = c.category_name,
+                              partent_id=c.partent_id,
                               articleDomainObjects = (from a in context.article
                                                       where c.category_id == a.category_id
                                                       select new articleDomainObject

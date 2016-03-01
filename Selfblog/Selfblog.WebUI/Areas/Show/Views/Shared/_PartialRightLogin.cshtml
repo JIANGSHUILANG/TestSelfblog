@@ -13,9 +13,10 @@
                     
                     if (Model != null)
                     {
+
                     <a href="/show/homepage/index" class="label label-default">全部
-                        <span class="" style="color: #FFFFFF; font-size: 15px; text-shadow: #9accf1 0 1px 0;">
-                            (@(Model.Sum(c => c.articleDomainObjects.Count)))
+                       
+                        <span class="" style="color: #FFFFFF; font-size: 15px; text-shadow: #9accf1 0 1px 0;">(@(Model.Sum(c => c.articleDomainObjects.Count)))
                         </span>
                     </a>
                         string[] lables = new string[] { "label-default", "label-success", "label-info", "label-warning", "label-danger" };
@@ -24,16 +25,29 @@
 
                         foreach (var item in Model)
                         {
-                            string color = lables[ran.Next(0, lables.Length)];
+                            if (item.partent_id == 0)
+                            {
+                                string color = lables[ran.Next(0, lables.Length)];
+
                     <a href="/show/homepage/index?categroy_id=@item.category_id" class="label @color">@item.category_name
                         <span class="" style="color: #FFFFFF; font-size: 15px; text-shadow: #9accf1 0 1px 0;">(@(item.articleDomainObjects == null ? 0 : item.articleDomainObjects.Count))
                         </span>
                     </a>
+                            }
                         }
                     }
-                }
+ }
 
             </div>
         </div>
     </div>
 </aside>
+@*<button class="am-btn am-btn-danger" id="my-popover">Popover via JS</button>
+<button class="am-btn am-btn-primary" data-am-popover="{content: '鄙是点击显示的 Popover'}">点击显示 Popover</button>*@
+<script>
+    window.onload = function () {
+        $('#my-popover').popover({
+            content: 'Popover via JavaScript'
+        })
+    }
+</script>
