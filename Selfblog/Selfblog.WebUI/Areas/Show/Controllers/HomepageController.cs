@@ -101,8 +101,11 @@ namespace Selfblog.WebUI.Areas.Show.Controllers
             return Newtonsoft.Json.JsonConvert.SerializeObject(new { type = 1,clicktype=clicktype,message = "操作成功 !" });
         }
 
-     
 
+        public ActionResult WebMap()
+        {
+            return View();
+        }
     }
 
 }
