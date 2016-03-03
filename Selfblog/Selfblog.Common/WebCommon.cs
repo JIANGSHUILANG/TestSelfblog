@@ -6,7 +6,7 @@ using System.Net;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Configuration;
 namespace Selfblog.Common
 {
     public class WebCommon
@@ -89,5 +89,12 @@ namespace Selfblog.Common
 
             return retString;
         }
+
+        public static string GetAppSetting(string key)
+        {
+            return ConfigurationManager.AppSettings[key].ToString();
+        }
+
+
     }
 }

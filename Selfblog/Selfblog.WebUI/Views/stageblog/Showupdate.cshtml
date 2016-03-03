@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <div class="am-form-group am-form-file">
+         @*       <div class="am-form-group am-form-file">
                     @Html.Label("上传标题图片")
                     <p>
                         <button type="button" onclick="showimage(this,'titleimage')" class="am-btn am-btn-default">上传标题图片</button>
@@ -67,7 +67,7 @@
                             @Html.HiddenFor(model => model.photo_id)
                         </div>
                     </div>
-                </div>
+                </div>*@
 
                 <div class="am-form-group">
                     @Html.LabelFor(model => model.article_author)
@@ -161,7 +161,7 @@
         $(function () {
             KindEditor.ready(function (K) {
                 window.editor = K.create('#content1', {
-                    uploadJson: '/shopclass/ckeditorUploadImage',
+                    uploadJson: '/stageblog/ckeditorUploadImage',
                     items: [
             				'cut', 'copy', 'paste', 'fontname', 'fontsize', '|', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline',
             				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', '|', 'image'],
@@ -181,6 +181,10 @@
                     }
                 });
             });
+
+            //选中下拉菜单
+            var categoryid = '@Model.category_id';
+            $("#categorylist option[value=" + categoryid + "]").attr("selected", true);
         })
 
     </script>

@@ -1,7 +1,11 @@
 ﻿using Newtonsoft.Json;
+using Qiniu.IO;
+using Qiniu.RS;
+using Selfblog.Common;
 using Selfblog.DomainObject;
 using Selfblog.IService;
 using Selfblog.Service;
+using Selfblog.WebUI.Models.AppSettingConfig;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -42,7 +46,13 @@ namespace Selfblog.WebUI.Areas.Allapis.Controllers
         {
             //base64传过来的时候
             int image_id;
-            string url = Base64stringToImage(data.base64str.Replace(" ", "+"), data.photo_type, data.imagename, out image_id);
+
+            //将图片保存至本地改成将文件上传至七牛
+            //string url = Base64stringToImage(data.base64str.Replace(" ", "+"), data.photo_type, data.imagename, out image_id);
+
+            string url = Base64stringToQINIU(data.base64str.Replace(" ", "+"), data.photo_type, data.imagename, out image_id);
+
+
             Result result = new Result();
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -58,6 +68,7 @@ namespace Selfblog.WebUI.Areas.Allapis.Controllers
             }
             return JsonConvert.SerializeObject(result);
         }
+
 
         /// <summary>
         /// base64str转为图片保存
@@ -85,6 +96,41 @@ namespace Selfblog.WebUI.Areas.Allapis.Controllers
                 image_id = Photo.photo_id;
                 bitmap.Save(HttpContext.Current.Server.MapPath(dir), System.Drawing.Imaging.ImageFormat.Jpeg);
                 ms.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dir;
+        }
+
+        private string Base64stringToQINIU(string base64str, int photo_type, string imagename, out int image_id)
+        {
+            string dir = string.Empty;
+            image_id = 0;
+            try
+            {
+                var butter = Convert.FromBase64String(base64str);
+                Stream stream = new MemoryStream(butter);
+
+                #region 七牛操作 —— 上传图片
+
+                var token = GetToken();
+                PutExtra extra = new PutExtra();
+                Qiniu.IO.IOClient client = new IOClient();
+                var date = DateTime.Now;
+                var key = date.Year.ToString() + (date.Month + 1).ToString() + date.Day.ToString() + date.Hour.ToString() + date.Minute.ToString() + date.Second.ToString() + date.Millisecond.ToString() + ".jpg";
+
+                PutRet ret = client.Put(token, key, stream, extra);
+
+                #endregion
+
+                photoDomainObject photo = new photoDomainObject() { photo_imageurl = ret.key, photo_typeid = photo_type };
+                var Photo = photoservice.AddEntity(photo);
+                image_id = Photo.photo_id;
+                dir = AllConfig.QiNiuConfig(WebCommon.GetAppSetting("QiNiuUrl"),ret.key); 
+                //string.Format("{0}{1}", WebCommon.GetAppSetting("key"), ret.key);
+
             }
             catch (Exception ex)
             {
@@ -136,8 +182,69 @@ namespace Selfblog.WebUI.Areas.Allapis.Controllers
             }
         }
 
+        //byte[] 装换为 Stream
+        private Stream ByteTostream(byte[] butter)
+        {
+            Stream stream = new MemoryStream(butter);
+            return stream;
+        }
+
+        //Stream 转换为 byte[]
+        private byte[] ByteTostream(Stream stream)
+        {
+            byte[] butter = new byte[stream.Length];
+            stream.Read(butter, 0, butter.Length);
+
+            stream.Seek(0, SeekOrigin.Begin);
+            return butter;
+        }
+
+        //将Stream写入文件
+        public void StreamToFile(Stream stream, string fileName)
+        {
+            // 把 Stream 转换成 byte[]
+            byte[] bytes = new byte[stream.Length];
+            stream.Read(bytes, 0, bytes.Length);
+            // 设置当前流的位置为流的开始
+            stream.Seek(0, SeekOrigin.Begin);
+            // 把 byte[] 写入文件
+            FileStream fs = new FileStream(fileName, FileMode.Create);
+            BinaryWriter bw = new BinaryWriter(fs);
+            bw.Write(bytes);
+            bw.Close();
+            fs.Close();
+        }
+
+        //从文件读取 Stream
+        public Stream FileToStream(string fileName)
+        {
+            // 打开文件
+            FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+            // 读取文件的 byte[]
+            byte[] bytes = new byte[fileStream.Length];
+            fileStream.Read(bytes, 0, bytes.Length);
+            fileStream.Close();
+            // 把 byte[] 转换成 Stream
+            Stream stream = new MemoryStream(bytes);
+            return stream;
+        }
 
 
+        #region 七牛相关
+
+        //图片上传至七牛
+
+
+        //获取Token
+        private string GetToken()
+        {
+
+            Qiniu.Conf.Config.ACCESS_KEY = "ZZdUQg0-Ww5ngJTQ8F6i-1khKtLKUEYyuZP5alGv";
+            Qiniu.Conf.Config.SECRET_KEY = "SZiQqnmOh0yP4n-Sh1gE_gXOtsDZFtV6pHUKUGbJ";
+            var policy = new PutPolicy("jiangshuilang", 3600);
+            return policy.Token();
+        }
+        #endregion
 
     }
 }

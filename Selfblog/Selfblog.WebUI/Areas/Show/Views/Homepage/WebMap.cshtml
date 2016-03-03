@@ -25,32 +25,45 @@
 <div id="container"></div>
 <button id="show">显示全景导航</button>
 <button id="hid">隐藏全景导航</button>
+<input type="hidden" id="lng" />
+<input type="hidden" id="lat" />
 @section scripts{
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0dMpQuqEzSlrKVhihX6M9bkC"></script>
     <script type="text/javascript">
+        showmap();
 
-        var map = new BMap.Map("container");
+        document.getElementById("show").onclick = function () {
+            //全景导航
+            var panorama = new BMap.Panorama('container');
+            panorama.setPov({ heading: -40, pitch: 6 });
+            panorama.setPosition(new BMap.Point($("#lng").val(), $("#lat").val())); //根据经纬度坐标展示全景图		
+        };
 
-        // 创建地址解析器实例
-        var myGeo = new BMap.Geocoder();
-        // 将地址解析结果显示在地图上,并调整地图视野
-        myGeo.getPoint("上海市虹口区水电路奎照路1461号", function (point) {
-            if (point) {
-                //point.lng
-                //point.lat
-                map.centerAndZoom(point, 16);
-                map.addOverlay(new BMap.Marker(point));
-            } else {
-                alert("您选择地址没有解析到结果!");
-            }
-        }, "北京市");
+        document.getElementById("hid").onclick = function () {
+            showmap();
+        };
+
 
         function showmap() {
+            var map = new BMap.Map("container");
 
+            // 创建地址解析器实例
+            var myGeo = new BMap.Geocoder();
+            // 将地址解析结果显示在地图上,并调整地图视野
+            myGeo.getPoint("上海虹口区水电路1461号源丰大楼", function (point) {
+                if (point) {
+                    //point.lng
+                    //point.lat
+                    $("#lng").val(point.lng);
+                    $("#lat").val(point.lat);
+                    map.centerAndZoom(point, 16);
+                    map.addOverlay(new BMap.Marker(point));
+                } else {
+                    alert("您选择地址没有解析到结果!");
+                }
+            }, "上海市");
         }
 
-        function hidmap() {
 
-        }
     </script>
 }

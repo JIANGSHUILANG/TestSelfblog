@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <div class="am-form-group am-form-file">
+               @* <div class="am-form-group am-form-file">
                     @Html.Label("上传标题图片")
                     <p>
                         <button type="button" onclick="showimage(this,'titleimage')" class="am-btn am-btn-default">上传标题图片</button>
@@ -67,7 +67,7 @@
                             @Html.Hidden("photo_id")
                         </div>
                     </div>
-                </div>
+                </div>*@
 
                 <div class="am-form-group">
                     @Html.LabelFor(model => model.article_author)
@@ -159,9 +159,12 @@
     <script src="~/MyScript/addupdateblogup.js"></script>
     <script type="text/javascript">
         $(function () {
+          
+
+            //newkindeditor.js中 resizeType ：2或1或0，2时可以拖动改变宽度和高度，1时只能改变高度，0时不能拖动。
             KindEditor.ready(function (K) {
                 window.editor = K.create('#content1', {
-                    uploadJson: '/shopclass/ckeditorUploadImage',
+                    uploadJson: '/stageblog/ckeditorUploadImage',
                     items: [
             				'cut', 'copy', 'paste', 'fontname', 'fontsize', '|', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline',
             				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', '|', 'image'],

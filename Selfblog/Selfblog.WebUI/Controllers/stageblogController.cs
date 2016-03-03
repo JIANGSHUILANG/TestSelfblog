@@ -1,9 +1,16 @@
-﻿using Selfblog.DomainObject;
+﻿using Qiniu.IO;
+using Qiniu.RS;
+using Selfblog.Common;
+using Selfblog.DomainObject;
+using Selfblog.WebUI.Models.AppSettingConfig;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.UI.WebControls;
 
 namespace Selfblog.WebUI.Controllers
@@ -91,6 +98,88 @@ namespace Selfblog.WebUI.Controllers
 
         public ActionResult CT()
         { return View(); }
+
+        //获取Token
+        private string GetToken()
+        {
+
+            Qiniu.Conf.Config.ACCESS_KEY = "ZZdUQg0-Ww5ngJTQ8F6i-1khKtLKUEYyuZP5alGv";
+            Qiniu.Conf.Config.SECRET_KEY = "SZiQqnmOh0yP4n-Sh1gE_gXOtsDZFtV6pHUKUGbJ";
+            var policy = new PutPolicy("jiangshuilang", 3600);
+            return policy.Token();
+        }
+
+        //富文本编辑器上传图片,上传至七牛
+        public string ckeditorUploadImage()
+        {
+            var file = Request.Files["upload"];
+            var filename = string.Empty;
+            var errCount = 0;
+            var err = string.Empty;
+            var imagepath = string.Empty;
+            try
+            {
+                if (file != null)
+                {
+                    string ext = Path.GetExtension(file.FileName);
+                    if (file.ContentLength / 1024 > 5120)
+                    {
+                        err = "上传文件大于5MB";
+                        errCount++;
+                    }
+                    else if (ext.ToLower() == ".jpg" || ext.ToLower() == ".gif" || ext.ToLower() == ".jpeg" || ext.ToLower() == ".png")
+                    {
+
+                        byte[] bytes = new byte[file.InputStream.Length];
+                        file.InputStream.Read(bytes, 0, bytes.Length);
+                        file.InputStream.Seek(0, SeekOrigin.Begin);
+
+
+                        #region 七牛操作 —— 上传图片
+
+                        var token = GetToken();
+                        PutExtra extra = new PutExtra();
+                        Qiniu.IO.IOClient client = new IOClient();
+                        var date = DateTime.Now;
+                        var key = date.Year.ToString() + (date.Month + 1).ToString() + date.Day.ToString() + date.Hour.ToString() + date.Minute.ToString() + date.Second.ToString() + date.Millisecond.ToString() + ".jpg";
+                        PutRet ret = client.Put(token, key, file.InputStream, extra);
+                        imagepath = AllConfig.QiNiuConfig(WebCommon.GetAppSetting("QiNiuUrl"), ret.key);              
+                        #endregion
+
+                        #region 上传至WCF
+
+                        //Upload.UploadServiceClient client = new Upload.UploadServiceClient();
+                        //imagepath = client.UploadImage1(bytes, 0, ext.Split('.')[1]);  //后缀转换base64获取 
+                        #endregion
+                    }
+                    else
+                    {
+                        err = "只允许上传jpg，jpeg，png，gif格式";
+                        errCount++;
+                    }
+                }
+                else
+                {
+                    err = "请上传文件";
+                    errCount++;
+                }
+            }
+            catch (Exception ex)
+            {
+                err = "请上传文件";
+                errCount++;
+            }
+
+            var jsel = new JavaScriptSerializer();
+
+            return jsel.Serialize(new
+            {
+                error = errCount,
+                url = err == string.Empty ? imagepath : string.Empty,
+                message = err
+            });
+
+        }
 
     }
 }
