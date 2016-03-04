@@ -12,6 +12,21 @@ NuGet 包  再导入 :MySql.Data
 由于出现以下异常，无法生成模型:“表“TableDetails”中列“IsPrimaryKey”的值为 DBNull。
 	指定的转换无效。
 解决方案：
-1.重启 mysql 服务
+登录到 mysql 数据库   运行命令：set global optimizer_switch='derived_merge=OFF';
+
+错误解决方案：
+
+表/视图“def.selfblog.photo”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。	G:\CloneFileGitSelfblog\Selfblog\Selfblog.EF\Mysql_Modeledmx.edmx	0	0	Selfblog.EF
+
+此问题: 把mysql里面表中，把表设置主键，自增就噢了
+
+
+
+Unable to create a map expression from article.category_id (System.Nullable`1[System.Int32]) to articleDomainObject.category_id (System.Int32)
+
+此问题：AutoMapper 映射的时候 ，映射的两个类中对应字段的类型得一样
+
+
+
 
 

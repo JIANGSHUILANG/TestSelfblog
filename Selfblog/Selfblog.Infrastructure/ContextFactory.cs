@@ -17,7 +17,7 @@ namespace Selfblog.Infrastructure
             DbContext dbContext = (DbContext)CallContext.GetData("dbContext");
             if (dbContext == null)
             {
-                dbContext = new SelfBlogEntities(); //Release :状态使用
+                dbContext = new selfblog__Entities(); //Release :状态使用
                 CallContext.SetData("dbContext", dbContext);
             }
             return dbContext;

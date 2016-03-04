@@ -15,7 +15,7 @@ namespace Selfblog.Service
     {
         public List<categoryDomainObject> GetCategorycoverarticlecount()
         {
-            SelfBlogEntities context = (SelfBlogEntities)base.db;
+            selfblog__Entities context = (selfblog__Entities)base.db;
             var result = (from c in context.category
                           select new categoryDomainObject
                           {
@@ -32,9 +32,9 @@ namespace Selfblog.Service
                                                           article_codeurl = a.article_codeurl,
                                                           article_time = a.article_time,
                                                           article_click = a.article_click,
-                                                          category_id = a.category_id,
+                                                          category_id = a.category_id.Value,
                                                           type_id = a.type_id,
-                                                          article_type = a.article_type,
+                                                          article_type = a.article_type.Value,
                                                           article_content = a.article_content,
                                                           article_up = a.article_up,
                                                           article_support = a.article_support,

@@ -11,11 +11,11 @@ namespace Selfblog.DomainObject
         public int c_id { get; set; }
         public Nullable<int> user_id { get; set; }
         public Nullable<int> type_id { get; set; }
-        public int article_id { get; set; }
+        public Nullable<int> article_id { get; set; }
         public string comment { get; set; }
-        public Nullable<System.DateTime> comment_time { get; set; }
+        public DateTime comment_time { get; set; }
         public Nullable<int> rec_status { get; set; } //0：未回复   1：已回复
-        public int status { get; set; }
+        public Nullable<int> status { get; set; }
         public string article_name { get; set; } //评论文章的名字
         public string username { get; set; }
         public string userheadimage { get; set; }

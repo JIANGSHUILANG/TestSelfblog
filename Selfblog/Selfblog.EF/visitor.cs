@@ -16,7 +16,7 @@ namespace Selfblog.EF
     {
         public int v_id { get; set; }
         public Nullable<int> user_id { get; set; }
-        public Nullable<System.DateTime> visitor_time { get; set; }
+        public System.DateTime visitor_time { get; set; }
         public string visitor_ip { get; set; }
         public Nullable<int> type_id { get; set; }
     }

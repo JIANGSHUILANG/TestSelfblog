@@ -14,7 +14,7 @@ namespace Selfblog.WebUI.Controllers
         public ActionResult Index(int pageIndexBlog = 1, int pageIndexComment = 1)
         {
 
-            var result = articleservice.LoadEntities(c => c.article_status == 1 && c.article_time.Value.Day == DateTime.Now.Day);
+            var result = articleservice.LoadEntities(c => c.article_status == 1 && c.article_time.Day == DateTime.Now.Day);
             ViewBag.blogcount = result.Count();
             ViewBag.allclick = result.Sum(c => c.article_click);
             var list = articleservice.Getarticles(pageIndexBlog, 5, 0);
@@ -26,7 +26,7 @@ namespace Selfblog.WebUI.Controllers
                 ViewBag.pageCount = list.TotalPageCount;
             }
 
-            ViewBag.commentcount = usercommentservice.LoadEntities(c => c.status == 1 && c.comment_time.Value.Day == DateTime.Now.Day).Count();
+            ViewBag.commentcount = usercommentservice.LoadEntities(c => c.status == 1 && c.comment_time.Day == DateTime.Now.Day).Count();
 
             var commentlist = usercommentservice.GetComments(pageIndexComment, 2);
             if (commentlist != null)

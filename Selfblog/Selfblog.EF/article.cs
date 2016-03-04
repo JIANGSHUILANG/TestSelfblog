@@ -16,11 +16,11 @@ namespace Selfblog.EF
     {
         public int article_id { get; set; }
         public string article_name { get; set; }
-        public Nullable<System.DateTime> article_time { get; set; }
+        public System.DateTime article_time { get; set; }
         public Nullable<int> article_click { get; set; }
-        public int category_id { get; set; }
+        public Nullable<int> category_id { get; set; }
         public Nullable<int> type_id { get; set; }
-        public int article_type { get; set; }
+        public Nullable<int> article_type { get; set; }
         public string article_content { get; set; }
         public Nullable<int> article_up { get; set; }
         public Nullable<int> article_support { get; set; }
@@ -28,7 +28,7 @@ namespace Selfblog.EF
         public string article_codeurl { get; set; }
         public Nullable<int> article_status { get; set; }
         public Nullable<int> photo_id { get; set; }
-        public int article_goodup { get; set; }
-        public int article_baddown { get; set; }
+        public Nullable<int> article_goodup { get; set; }
+        public Nullable<int> article_baddown { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace Selfblog.Service
             //string.IsNullOrWhiteSpace(click)
             //    string.IsNullOrWhiteSpace(comment)
 
-            SelfBlogEntities context = (SelfBlogEntities)base.db;
+            selfblog__Entities context = (selfblog__Entities)base.db;
 
             #region LINQ TO SQL
 
@@ -42,13 +42,13 @@ namespace Selfblog.Service
                             article_name = c.article_name,
                             article_time = c.article_time,
                             article_click = c.article_click,
-                            category_id = c.category_id,
+                            category_id = c.category_id.Value,
                             article_up = c.article_up,
-                            article_type = c.article_type,
+                            article_type = c.article_type.Value,
                             article_support = c.article_support,
                             article_content = c.article_content,
-                            article_goodup = c.article_goodup,
-                            article_baddown = c.article_baddown,
+                            article_goodup = c.article_goodup.Value,
+                            article_baddown = c.article_baddown.Value,
                             comment_count = (from u in context.user_comment where c.article_id == u.article_id select u).Count(),
                             photo = (from p in context.photo
                                      join g in context.category
@@ -89,7 +89,7 @@ namespace Selfblog.Service
             {
                 result = info.Where(c => c.article_author.Contains(author));
                 list.TotalItemCount = result.Count();
-                result = result.OrderByDescending<articleDomainObject, DateTime?>(c => c.article_time.Value).Skip<articleDomainObject>((pageIndex - 1) * pageSize).Take<articleDomainObject>(pageSize);
+                result = result.OrderByDescending<articleDomainObject, DateTime>(c => c.article_time).Skip<articleDomainObject>((pageIndex - 1) * pageSize).Take<articleDomainObject>(pageSize);
             }
             else if (!string.IsNullOrWhiteSpace(click))//按点击量查询
             {
@@ -101,7 +101,7 @@ namespace Selfblog.Service
             }
             else//All
             {
-                result = info.OrderByDescending<articleDomainObject, DateTime?>(c => c.article_time.Value).Skip<articleDomainObject>((pageIndex - 1) * pageSize).Take<articleDomainObject>(pageSize);
+                result = info.OrderByDescending<articleDomainObject, DateTime>(c => c.article_time).Skip<articleDomainObject>((pageIndex - 1) * pageSize).Take<articleDomainObject>(pageSize);
             }
 
             #endregion
@@ -114,7 +114,7 @@ namespace Selfblog.Service
 
         public articleDomainObject GetarticleInfo(Expression<Func<articleDomainObject, bool>> whereT)
         {
-            SelfBlogEntities context = (SelfBlogEntities)base.db;
+            selfblog__Entities context = (selfblog__Entities)base.db;
 
             #region LINQ TO SQL
 
@@ -126,13 +126,13 @@ namespace Selfblog.Service
                             article_name = c.article_name,
                             article_time = c.article_time,
                             article_click = c.article_click,
-                            category_id = c.category_id,
+                            category_id = c.category_id.Value,
                             article_up = c.article_up,
-                            article_type = c.article_type,
+                            article_type = c.article_type.Value,
                             article_support = c.article_support,
                             article_content = c.article_content,
-                            article_goodup = c.article_goodup,
-                            article_baddown = c.article_baddown,
+                            article_goodup = c.article_goodup.Value,
+                            article_baddown = c.article_baddown.Value,
                             article_status = c.article_status,
                             comment_count = (from u in context.user_comment where c.article_id == u.article_id select u).Count(),
                             photo = (from p in context.photo

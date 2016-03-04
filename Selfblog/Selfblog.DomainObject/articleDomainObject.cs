@@ -30,13 +30,13 @@ namespace Selfblog.DomainObject
 
 
         [DisplayName("文章发布时间")]
-        public Nullable<System.DateTime> article_time { get; set; }
+        public System.DateTime article_time { get; set; }
 
         [DisplayName("文章点击量")]
         public Nullable<int> article_click { get; set; }
 
         [DisplayName("文章分类")]
-        public int category_id { get; set; }
+        public Nullable<int> category_id { get; set; }
 
         //[DisplayName("所属用户")]
         //public Nullable<int> user_id { get; set; }
@@ -46,7 +46,7 @@ namespace Selfblog.DomainObject
 
         //:0为私有，1为公开，2为仅好友查看"
         [DisplayName("文章的模式")]
-        public int article_type { get; set; }
+        public Nullable<int> article_type { get; set; }
 
         [DisplayName("文章内容")]
         [Required(ErrorMessage = "文章内容不能为空")]
@@ -65,9 +65,9 @@ namespace Selfblog.DomainObject
         public Nullable<int> photo_id { get; set; }
 
         [DisplayName("赞")]
-        public int article_goodup { get; set; }
+        public Nullable<int> article_goodup { get; set; }
         [DisplayName("踩")]
-        public int article_baddown { get; set; }
+        public Nullable<int> article_baddown { get; set; }
 
         /// <summary>
         /// 评论个数

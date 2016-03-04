@@ -15,7 +15,7 @@ namespace Selfblog.Service
     {
         public Infrastructure.PageOfItems<user_commentDomainObject> GetComments(int pageIndex, int pageSize)
         {
-            SelfBlogEntities context = (SelfBlogEntities)base.db;
+            selfblog__Entities context = (selfblog__Entities)base.db;
 
             var info = from c in context.user_comment
                        join u in context.user
@@ -31,7 +31,7 @@ namespace Selfblog.Service
                            userheadimage = t.user_image_url,
                            article_name = t1.article_name,
                            comment = c.comment,
-                           article_id = c.article_id,
+                           article_id = c.article_id.Value,
                            user_id = c.user_id,
                            rec_status = c.rec_status,
                            comment_time = c.comment_time,
@@ -44,7 +44,7 @@ namespace Selfblog.Service
                                           rec_comment = r.comment,
                                           username = (from n in context.user where n.user_id == r.user_id select n.user_name).FirstOrDefault(),
                                           userheadimage = t.user_image_url,
-                                          rec_id = r.rec_id
+                                          rec_id = r.rec_id.Value
                                       }).ToList()
                            //rec_id = c.c_id,
                            //rec_time = (from r in context.user_comment where r.rec_status == 1 && r.rec_id == c.c_id select r.comment_time).FirstOrDefault(),
@@ -59,7 +59,7 @@ namespace Selfblog.Service
                 TotalItemCount = info.Count()
             };
 
-            var result = info.OrderByDescending<user_commentDomainObject, DateTime?>(c => c.comment_time.Value).Skip<user_commentDomainObject>((pageIndex - 1) * pageSize).Take<user_commentDomainObject>(pageSize);
+            var result = info.OrderByDescending<user_commentDomainObject, DateTime>(c => c.comment_time).Skip<user_commentDomainObject>((pageIndex - 1) * pageSize).Take<user_commentDomainObject>(pageSize);
 
             list.AddRange(result.ToList());
 

@@ -17,12 +17,12 @@ namespace Selfblog.EF
         public int c_id { get; set; }
         public Nullable<int> user_id { get; set; }
         public Nullable<int> type_id { get; set; }
+        public Nullable<int> article_id { get; set; }
         public string comment { get; set; }
-        public Nullable<System.DateTime> comment_time { get; set; }
-        public int article_id { get; set; }
+        public System.DateTime comment_time { get; set; }
         public Nullable<int> rec_status { get; set; }
-        public int status { get; set; }
-        public int rec_id { get; set; }
+        public Nullable<int> rec_id { get; set; }
+        public Nullable<int> status { get; set; }
         public Nullable<int> floor { get; set; }
     }
 }
