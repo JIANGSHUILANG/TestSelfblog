@@ -1,0 +1,17 @@
+﻿Mysql连接EF使用：
+首先下载  MySQL for Visual Studio   大概 9.4M   
+再下载 mysql-connector-net-6.8.3   （.NET平台驱动程序，地址：http://dev.mysql.com/downloads/connector/net/）
+EF :安装 EntityFramwork 6.0
+NuGet 包  再导入 :MySql.Data    
+
+注意了：App.config中生成的Provider是有问题的，这时候要手动添加红色线画出的一条（是添加一条哦）： 
+<provider invariantName="MySql.Data.MySqlClient" type="MySql.Data.MySqlClient.MySqlProviderServices, MySql.Data.Entity.EF6" />
+
+
+
+由于出现以下异常，无法生成模型:“表“TableDetails”中列“IsPrimaryKey”的值为 DBNull。
+	指定的转换无效。
+解决方案：
+1.重启 mysql 服务
+
+
