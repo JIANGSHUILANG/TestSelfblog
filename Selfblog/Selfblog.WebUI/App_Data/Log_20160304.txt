@@ -4842,3 +4842,28 @@ Unable to create a map expression from user_comment.article_id (System.Nullable`
  
 
 
+2016-03-04 15:03:46,272 [92] ERROR error [(null)] - MVC框架错误
+ ,bc705ae2-44c1-4172-884a-33dc75b16db9
+,未找到视图“WebMap”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/Homepage/WebMap.aspx
+~/Views/Homepage/WebMap.ascx
+~/Views/Shared/WebMap.aspx
+~/Views/Shared/WebMap.ascx
+~/Views/Homepage/WebMap.cshtml
+~/Views/Homepage/WebMap.vbhtml
+~/Views/Shared/WebMap.cshtml
+~/Views/Shared/WebMap.vbhtml
+,   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ 
+ 
+ 
+
+
