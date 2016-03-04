@@ -90,7 +90,7 @@ namespace Selfblog.Common
             return retString;
         }
 
-        public static string GetAppSetting(string key)
+        public static string Get_AppSetting(string key)
         {
             return ConfigurationManager.AppSettings[key].ToString();
         }

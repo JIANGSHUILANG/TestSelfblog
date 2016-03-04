@@ -143,7 +143,7 @@ namespace Selfblog.WebUI.Controllers
                         var date = DateTime.Now;
                         var key = date.Year.ToString() + (date.Month + 1).ToString() + date.Day.ToString() + date.Hour.ToString() + date.Minute.ToString() + date.Second.ToString() + date.Millisecond.ToString() + ".jpg";
                         PutRet ret = client.Put(token, key, file.InputStream, extra);
-                        imagepath = AllConfig.QiNiuConfig(WebCommon.GetAppSetting("QiNiuUrl"), ret.key);              
+                        imagepath = AllConfig.QiNiuConfig(WebCommon.Get_AppSetting("QiNiuUrl"), ret.key);              
                         #endregion
 
                         #region 上传至WCF

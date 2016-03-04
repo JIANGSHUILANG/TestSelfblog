@@ -128,7 +128,7 @@ namespace Selfblog.WebUI.Areas.Allapis.Controllers
                 photoDomainObject photo = new photoDomainObject() { photo_imageurl = ret.key, photo_typeid = photo_type };
                 var Photo = photoservice.AddEntity(photo);
                 image_id = Photo.photo_id;
-                dir = AllConfig.QiNiuConfig(WebCommon.GetAppSetting("QiNiuUrl"),ret.key); 
+                dir = AllConfig.QiNiuConfig(WebCommon.Get_AppSetting("QiNiuUrl"),ret.key); 
                 //string.Format("{0}{1}", WebCommon.GetAppSetting("key"), ret.key);
 
             }
