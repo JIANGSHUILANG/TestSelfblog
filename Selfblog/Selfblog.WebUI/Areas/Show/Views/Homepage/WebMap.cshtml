@@ -6,7 +6,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
 <style type="text/css">
-    html {
+    /*html {
         height: 100%;
     }
 
@@ -19,6 +19,50 @@
     #container {
         height: 50%;
         width: 50%;
+    }*/
+
+
+    body, html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        font-family: "微软雅黑";
+    }
+
+    #container {
+        height: 500px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #result {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    dl, dt, dd, ul, li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+
+
+    dt {
+        font-size: 14px;
+        font-family: "微软雅黑";
+        font-weight: bold;
+        border-bottom: 1px dotted #000;
+        padding: 5px 0 5px 5px;
+        margin: 5px 0;
+    }
+
+    dd {
+        padding: 5px 0 0 5px;
+    }
+
+    li {
+        line-height: 28px;
     }
 </style>
 
@@ -29,6 +73,8 @@
 <input type="hidden" id="lat" />
 @section scripts{
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0dMpQuqEzSlrKVhihX6M9bkC"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
     <script type="text/javascript">
         showmap();
 
@@ -38,32 +84,78 @@
             panorama.setPov({ heading: -40, pitch: 6 });
             panorama.setPosition(new BMap.Point($("#lng").val(), $("#lat").val())); //根据经纬度坐标展示全景图		
         };
-
+        //120.993908
+        //31.414333
         document.getElementById("hid").onclick = function () {
             showmap();
         };
 
 
         function showmap() {
-            var map = new BMap.Map("container");
-
-            // 创建地址解析器实例
+            // 百度地图API功能
+            var map = new BMap.Map('container');
             var myGeo = new BMap.Geocoder();
+
             // 将地址解析结果显示在地图上,并调整地图视野
-            myGeo.getPoint("上海虹口区水电路1461号源丰大楼", function (point) {
+            myGeo.getPoint("江苏省昆山市金浦路518号", function (point) {
                 if (point) {
                     //point.lng
                     //point.lat
                     $("#lng").val(point.lng);
                     $("#lat").val(point.lat);
+                    console.log(point.lng);
+                    console.log(point.lat);
                     map.centerAndZoom(point, 16);
-                    map.addOverlay(new BMap.Marker(point));
+                    map.enableScrollWheelZoom();
+                    //map.addOverlay(new BMap.Marker(point));
+
+                    var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
+                    '地址：江苏省昆山市金浦路金浦花园<br/>电话：13524093704<br/>简介：昆山市位于上海与苏州交界处，人杰地灵，环境优美，质地淳朴，俗称小台湾。' +
+                  '</div>';
+
+
+
+
+                    //创建检索信息窗口对象
+                    var searchInfoWindow = null;
+                    searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+                        title: "昆山市金浦路金浦花园",      //标题
+                        width: 300,             //宽度
+                        height: 105,              //高度
+                        panel: "panel",         //检索结果面板
+                        enableAutoPan: true,     //自动平移
+                        searchTypes: [
+                            BMAPLIB_TAB_SEARCH,   //周边检索
+                            BMAPLIB_TAB_TO_HERE,  //到这里去
+                            BMAPLIB_TAB_FROM_HERE //从这里出发
+                        ]
+                    });
+                    var marker = new BMap.Marker(point); //创建marker对象
+                    marker.enableDragging(); //marker可拖拽
+
+                    //点击事件：点击后弹出文本框
+                    //marker.addEventListener("click", function (e) {
+                    //    searchInfoWindow.open(marker);
+                    //})
+                    searchInfoWindow.open(marker); //直接显示文本框
+
+                    map.addOverlay(marker); //在地图中添加marker
+                    //样式1
+                    var searchInfoWindow1 = new BMapLib.SearchInfoWindow(map, "信息框1内容", {
+                        title: "信息框1", //标题
+                        panel: "panel", //检索结果面板
+                        enableAutoPan: true, //自动平移
+                        searchTypes: [
+                            BMAPLIB_TAB_FROM_HERE, //从这里出发
+                            BMAPLIB_TAB_SEARCH   //周边检索
+                        ]
+                    });
+
                 } else {
                     alert("您选择地址没有解析到结果!");
                 }
-            }, "上海市");
+            }, "昆山市");
+
         }
-
-
     </script>
 }
