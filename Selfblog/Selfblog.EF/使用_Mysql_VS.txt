@@ -7,6 +7,10 @@ NuGet 包  再导入 :MySql.Data
 注意了：App.config中生成的Provider是有问题的，这时候要手动添加红色线画出的一条（是添加一条哦）： 
 <provider invariantName="MySql.Data.MySqlClient" type="MySql.Data.MySqlClient.MySqlProviderServices, MySql.Data.Entity.EF6" />
 
+报错解决方案：（未能加载 MySql.Data.Entity.EF6, Version=6.9.8.0 ....... 的实例，就是因为引用的EntityFramework.dll不一致）
+注意所有的 EntityFramework.dll ,EntityFramework.SqlServer.dll 必须一致
+
+
 
 
 由于出现以下异常，无法生成模型:“表“TableDetails”中列“IsPrimaryKey”的值为 DBNull。
